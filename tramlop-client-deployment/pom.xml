@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.cyk.system.tramlop.client</groupId>
+		<artifactId>tramlop-client-_pom</artifactId>
+		<version>0.1.0</version>
+	</parent>
+
+	<name>Deployment</name>
+	
+	<groupId>org.cyk.system.tramlop.client.deployment</groupId>
+	<artifactId>tramlop-client-deployment</artifactId>
+	<packaging>war</packaging>
+	
+	<properties>
+		<microprofile.archive.name>tramlop-client</microprofile.archive.name>
+		<jboss-web.context-root>tramlop/client</jboss-web.context-root>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.cyk.system.tramlop.client.controller.impl</groupId>
+			<artifactId>tramlop-client-controller-impl</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.cyk.jee.utility.client.deployment</groupId>
+			<artifactId>jee-utility-client-deployment</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+	</dependencies>		
+	
+	<profiles>
+		<profile>
+			<id>deployment.common</id>
+			<properties>
+				<cyk.variable.system.name>TRAMLOP</cyk.variable.system.name>
+				<cyk.variable.user.interface.theme.primefaces>atlantis-blue</cyk.variable.user.interface.theme.primefaces>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.wildfly.local</id>
+			<properties>
+				<cyk.variable.system.proxy.uniform.resource.identifier>http://localhost:8080/tramlop/server/api</cyk.variable.system.proxy.uniform.resource.identifier>
+			</properties>
+		</profile>
+	</profiles>
+	
+
+</project>

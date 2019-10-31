@@ -20,6 +20,12 @@
 			<artifactId>tramlop-client-controller-api</artifactId>
 			<version>0.1.0</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.cyk.jee.utility.client.controller.web.jsf.primefaces</groupId>
+			<artifactId>jee-utility-client-controller-web-jsf-primefaces</artifactId>
+			<version>0.1.0</version>
+		</dependency>
 	</dependencies>		
 
 </project>

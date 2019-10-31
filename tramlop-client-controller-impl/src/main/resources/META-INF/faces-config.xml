@@ -9,12 +9,13 @@
 		<from-view-id>*</from-view-id>
 		
 		<!-- xxx -->
-		<!--navigation-case>
-			<from-outcome>xxxView</from-outcome>
-			<to-view-id></to-view-id>
+		<!--
+		<navigation-case>
+			<from-outcome>driverListView</from-outcome>
+			<to-view-id>/private/driver/list.jsf</to-view-id>
 			<redirect />
-		</navigation-case-->
-		
+		</navigation-case>
+		-->
 	</navigation-rule>
 
 </faces-config>

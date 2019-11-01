@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" 
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org"
+                xmlns:theme="http://runtime.adminfaces.primefaces.jsf.web.theme.interface.user.cyk.org">
+	
+	<!--
+	<theme:menu value="#{__page__.window.theme.menu}"/>
+	-->
+	
+    <ul class="sidebar-menu tree" data-widget="tree">
+        <li>
+            <p:link outcome="/index" onclick="clearBreadCrumbs()">
+                <i class="fa fa-home"/>
+                <span>Accueil</span>
+            </p:link>
+        </li>
+        <li class="header">
+            Chargement
+        </li>
+        <li>
+            <p:link outcome="shipmentListView">
+                <i class="fa fa-external-link"/>
+                <span>Chargement</span>
+            </p:link>
+        </li>
+        <li class="header">
+            Stockage
+        </li>
+        <li>
+            <p:link outcome="productListView">
+            	<i class="fa fa-suitcase"/>
+                <span>Produit</span>
+            </p:link>
+        </li>
+        <li class="header">
+            Paramètrage
+        </li>
+        <li>
+            <p:link outcome="driverListView">
+            	<i class="fa fa-male"/>
+                <span>Conducteur</span>
+            </p:link>
+        </li>
+        <li>
+            <p:link outcome="truckListView">
+            	<i class="fa fa-truck"/>
+                <span>Camion</span>
+            </p:link>
+        </li>
+        <li>
+            <p:link outcome="customerListView">
+            	<i class="fa fa-users"/>
+                <span>Client</span>
+            </p:link>
+        </li>
+    </ul>    
+    
+</ui:composition>

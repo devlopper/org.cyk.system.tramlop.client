@@ -7,15 +7,31 @@
 
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
-		
-		<!-- xxx -->
-		<!--
 		<navigation-case>
 			<from-outcome>driverListView</from-outcome>
 			<to-view-id>/private/driver/list.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
-		-->
+		<navigation-case>
+			<from-outcome>truckListView</from-outcome>
+			<to-view-id>/private/truck/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>shipmentListView</from-outcome>
+			<to-view-id>/private/shipment/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>customerListView</from-outcome>
+			<to-view-id>/private/customer/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>productListView</from-outcome>
+			<to-view-id>/private/product/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
 	</navigation-rule>
 
 </faces-config>

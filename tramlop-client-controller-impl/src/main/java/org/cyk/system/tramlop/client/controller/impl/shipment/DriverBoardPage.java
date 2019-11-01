@@ -1,4 +1,4 @@
-package org.cyk.system.tramlop.client.controller.impl.driver;
+package org.cyk.system.tramlop.client.controller.impl.shipment;
 
 import java.io.Serializable;
 

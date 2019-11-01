@@ -38,7 +38,20 @@
 			<id>deployment.common</id>
 			<properties>
 				<cyk.variable.system.name>TRAMLOP</cyk.variable.system.name>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.atlantis</id>
+			<properties>
 				<cyk.variable.user.interface.theme.primefaces>atlantis-blue</cyk.variable.user.interface.theme.primefaces>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.adminfaces</id>
+			<properties>
+				<cyk.variable.user.interface.theme.menu.path>/private/__adminfaces__/menu.xhtml</cyk.variable.user.interface.theme.menu.path>
 			</properties>
 		</profile>
 		

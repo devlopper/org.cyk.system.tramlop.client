@@ -33,6 +33,11 @@
 		<param-value>${cyk.variable.user.interface.theme.primefaces}</param-value>
 	</context-param>
 	
+	<context-param>
+		<param-name>cyk.variable.user.interface.theme.menu.path</param-name>
+		<param-value>${cyk.variable.user.interface.theme.menu.path}</param-value>
+	</context-param>
+	
 	<!-- Static resources -->
 	
 	<!-- Favicon -->

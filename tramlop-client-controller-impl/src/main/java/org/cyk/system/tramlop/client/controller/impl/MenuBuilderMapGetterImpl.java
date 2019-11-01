@@ -3,7 +3,11 @@ package org.cyk.system.tramlop.client.controller.impl;
 import java.io.Serializable;
 import java.security.Principal;
 
+import org.cyk.system.tramlop.client.controller.entities.product.Product;
+import org.cyk.system.tramlop.client.controller.entities.shipment.Client;
 import org.cyk.system.tramlop.client.controller.entities.shipment.Driver;
+import org.cyk.system.tramlop.client.controller.entities.shipment.Shipment;
+import org.cyk.system.tramlop.client.controller.entities.shipment.Truck;
 import org.cyk.utility.client.controller.component.menu.AbstractMenuBuilderMapGetterImpl;
 import org.cyk.utility.client.controller.component.menu.MenuBuilder;
 import org.cyk.utility.client.controller.component.menu.MenuItemBuilder;
@@ -29,7 +33,7 @@ public class MenuBuilderMapGetterImpl extends AbstractMenuBuilderMapGetterImpl i
 						,__inject__(MenuItemBuilder.class).setCommandableName("Camions")
 						)
 				*/
-				.list(Driver.class)
+				.list(Driver.class,Truck.class,Client.class,Product.class,Shipment.class)
 				,__inject__(MenuItemBuilder.class).setCommandableName("Stockage")
 				.addChild(
 						__inject__(MenuItemBuilder.class).setCommandableName("Stocker")

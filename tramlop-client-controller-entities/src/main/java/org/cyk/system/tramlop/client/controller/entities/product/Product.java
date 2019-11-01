@@ -1,4 +1,4 @@
-package org.cyk.system.tramlop.client.controller.entities.shipment;
+package org.cyk.system.tramlop.client.controller.entities.product;
 
 import java.io.Serializable;
 
@@ -15,14 +15,11 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class Driver extends AbstractDataIdentifiableSystemStringAndIdentifiableBusinessStringImpl implements Data,Serializable {
+public class Product extends AbstractDataIdentifiableSystemStringAndIdentifiableBusinessStringImpl implements Data,Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Input @InputString @InputStringLineOne
 	@NotNull
-	private String firstNameAndLastNames;
+	private String name;
 	
-	@Input @InputString @InputStringLineOne
-	@NotNull
-	private String identityRegistration;
 }

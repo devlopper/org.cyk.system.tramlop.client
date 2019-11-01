@@ -2,8 +2,6 @@ package org.cyk.system.tramlop.client.controller.entities.shipment;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
-
 import org.cyk.utility.client.controller.component.annotation.Input;
 import org.cyk.utility.client.controller.component.annotation.InputString;
 import org.cyk.utility.client.controller.component.annotation.InputStringLineOne;
@@ -15,14 +13,11 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class Driver extends AbstractDataIdentifiableSystemStringAndIdentifiableBusinessStringImpl implements Data,Serializable {
+public class Truck extends AbstractDataIdentifiableSystemStringAndIdentifiableBusinessStringImpl implements Data,Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Input @InputString @InputStringLineOne
-	@NotNull
-	private String firstNameAndLastNames;
+	private String registration;
 	
-	@Input @InputString @InputStringLineOne
-	@NotNull
-	private String identityRegistration;
+	
 }

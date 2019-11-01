@@ -7,7 +7,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class Driver extends AbstractPersonImpl implements Serializable {
+public class Customer extends AbstractPersonImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 }

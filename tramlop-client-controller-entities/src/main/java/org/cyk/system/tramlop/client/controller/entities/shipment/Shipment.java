@@ -12,14 +12,13 @@ import org.cyk.utility.client.controller.component.annotation.InputChoiceOneComb
 import org.cyk.utility.client.controller.component.annotation.InputString;
 import org.cyk.utility.client.controller.component.annotation.InputStringLineOne;
 import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringAndIdentifiableBusinessStringImpl;
-import org.cyk.utility.client.controller.data.Data;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class Shipment extends AbstractDataIdentifiableSystemStringAndIdentifiableBusinessStringImpl implements Data,Serializable {
+public class Shipment extends AbstractDataIdentifiableSystemStringAndIdentifiableBusinessStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
@@ -40,6 +39,10 @@ public class Shipment extends AbstractDataIdentifiableSystemStringAndIdentifiabl
 	
 	@Input @InputString @InputStringLineOne
 	@NotNull
+	private String weight;
+	
+	@Input @InputString @InputStringLineOne
+	@NotNull
 	private String placeOfDeparture;
 	
 	@Input @InputString @InputStringLineOne
@@ -49,4 +52,8 @@ public class Shipment extends AbstractDataIdentifiableSystemStringAndIdentifiabl
 	@Input @InputString @InputStringLineOne
 	@NotNull
 	private String duration;
+	
+	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
+	@NotNull
+	private Customer customer;
 }

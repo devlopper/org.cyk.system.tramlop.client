@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.security.Principal;
 
 import org.cyk.system.tramlop.client.controller.entities.product.Product;
-import org.cyk.system.tramlop.client.controller.entities.shipment.Client;
+import org.cyk.system.tramlop.client.controller.entities.shipment.Customer;
 import org.cyk.system.tramlop.client.controller.entities.shipment.Driver;
 import org.cyk.system.tramlop.client.controller.entities.shipment.Shipment;
 import org.cyk.system.tramlop.client.controller.entities.shipment.Truck;
@@ -25,21 +25,11 @@ public class MenuBuilderMapGetterImpl extends AbstractMenuBuilderMapGetterImpl i
 	protected void ____executePrincipalIsNull____(MenuBuilder sessionMenuBuilder, Object request) throws Exception {
 		sessionMenuBuilder.addItems(
 				__inject__(MenuItemBuilder.class).setCommandableName("Chargement")
-				/*.addChild(
-						__inject__(MenuItemBuilder.class).setCommandableName("Charger")
-						,__inject__(MenuItemBuilder.class).setCommandableName("Décharger")
-						,__inject__(MenuItemBuilder.class).setCommandableName("Chargements")
-						,__inject__(MenuItemBuilder.class).setCommandableName("Chauffeurs")
-						,__inject__(MenuItemBuilder.class).setCommandableName("Camions")
-						)
-				*/
-				.list(Driver.class,Truck.class,Client.class,Product.class,Shipment.class)
+				.list(Shipment.class)
 				,__inject__(MenuItemBuilder.class).setCommandableName("Stockage")
-				.addChild(
-						__inject__(MenuItemBuilder.class).setCommandableName("Stocker")
-						,__inject__(MenuItemBuilder.class).setCommandableName("Déstocker")
-						,__inject__(MenuItemBuilder.class).setCommandableName("Produits")
-						)
+				.list(Product.class)
+				,__inject__(MenuItemBuilder.class).setCommandableName("Parametrage")
+				.list(Driver.class,Truck.class,Customer.class)
 				);
 	}
 

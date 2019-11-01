@@ -11,12 +11,6 @@ public class ApplicationScopeLifeCycleListener extends AbstractApplicationScopeL
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void __initialize__(Object object) {
-		super.__initialize__(object);
-		
-	}
-	
-	@Override
 	public void __destroy__(Object object) {}
 	
 	/**/

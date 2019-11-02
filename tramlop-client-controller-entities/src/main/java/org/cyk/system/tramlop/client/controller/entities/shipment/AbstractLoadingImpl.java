@@ -14,23 +14,11 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public abstract class AbstractPersonImpl extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Serializable {
+public abstract class AbstractLoadingImpl extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Input @InputString @InputStringLineOne
 	@NotNull
-	private String firstName;
-	
-	@Input @InputString @InputStringLineOne
-	private String lastNames;
-	
-	@Input @InputString @InputStringLineOne
-	private String identityCard;
-	
-	@Input @InputString @InputStringLineOne
-	private String phoneNumber;
-	
-	@Input @InputString @InputStringLineOne
-	private String electronicMailAddress;
+	private String weight;
 	
 }

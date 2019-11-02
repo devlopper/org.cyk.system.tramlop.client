@@ -23,6 +23,11 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>unloadingListView</from-outcome>
+			<to-view-id>/private/unloading/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>customerListView</from-outcome>
 			<to-view-id>/private/customer/list.jsf</to-view-id>
 			<redirect />

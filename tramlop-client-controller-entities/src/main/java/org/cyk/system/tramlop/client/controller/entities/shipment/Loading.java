@@ -1,52 +1,56 @@
 package org.cyk.system.tramlop.client.controller.entities.shipment;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
+import org.cyk.system.tramlop.client.controller.entities.product.Product;
 import org.cyk.utility.client.controller.component.annotation.Input;
 import org.cyk.utility.client.controller.component.annotation.InputChoice;
 import org.cyk.utility.client.controller.component.annotation.InputChoiceOne;
 import org.cyk.utility.client.controller.component.annotation.InputChoiceOneCombo;
-import org.cyk.utility.client.controller.component.annotation.InputDateTime;
 import org.cyk.utility.client.controller.component.annotation.InputString;
 import org.cyk.utility.client.controller.component.annotation.InputStringLineOne;
-import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class Shipment extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Serializable {
+public class Loading extends AbstractLoadingImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	@NotNull
-	private Loading loading;
+	private Product product;
 	
 	@Input @InputString @InputStringLineOne
 	@NotNull
-	private String placeOfDeparture;
+	private String productWeight;
+	
+	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
+	@NotNull
+	private Truck truck;
+	
+	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
+	@NotNull
+	private Driver driver;
 	
 	@Input @InputString @InputStringLineOne
 	@NotNull
-	private String placeOfArrival;
+	private String weight;
 	
-	@Input @InputDateTime
+	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	@NotNull
-	private LocalDateTime dateOfDeparture;
-	
-	@Input @InputString @InputStringLineOne
-	@NotNull
-	private String duration;
+	private Customer customer;
 	
 	/**/
 	
-	public static final String FIELD_LOADING = "loading";
-	public static final String FIELD_PLACE_OF_DEPARTURE = "placeOfDeparture";
-	public static final String FIELD_PLACE_OF_ARRIVAL = "placeOfArrival";
-	public static final String FIELD_DATE_OF_DEPARTURE = "dateOfDeparture";
-	public static final String FIELD_DURATION = "duration";
+	public static final String FIELD_PRODUCT = "product";
+	public static final String FIELD_PRODUCT_WEIGHT = "productWeight";
+	public static final String FIELD_TRUCK = "truck";
+	public static final String FIELD_DRIVER = "driver";
+	public static final String FIELD_WEIGHT = "weight";
+	public static final String FIELD_CUSTOMER = "customer";
+	
 }

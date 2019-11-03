@@ -37,6 +37,11 @@
 			<to-view-id>/private/product/list.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>productWeightMovementListView</from-outcome>
+			<to-view-id>/private/productweightmovement/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
 	</navigation-rule>
 
 </faces-config>

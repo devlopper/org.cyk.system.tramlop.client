@@ -11,14 +11,13 @@ import org.cyk.utility.client.controller.component.annotation.InputChoiceOneComb
 import org.cyk.utility.client.controller.component.annotation.InputString;
 import org.cyk.utility.client.controller.component.annotation.InputStringLineOne;
 import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl;
-import org.cyk.utility.client.controller.data.Data;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class ProductWeightMovement extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Data,Serializable {
+public class ProductWeightMovement extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo

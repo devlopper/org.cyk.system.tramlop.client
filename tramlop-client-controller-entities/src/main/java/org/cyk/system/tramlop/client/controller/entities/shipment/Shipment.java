@@ -38,9 +38,15 @@ public class Shipment extends AbstractDataIdentifiableSystemStringIdentifiableBu
 	@NotNull
 	private LocalDateTime dateOfDeparture;
 	
-	@Input @InputString @InputStringLineOne
+	@Input @InputDateTime
 	@NotNull
+	private LocalDateTime dateOfArrival;
+	
+	//@Input @InputString @InputStringLineOne
+	//@NotNull
 	private String duration;
+	
+	private String status;
 	
 	/**/
 	
@@ -48,5 +54,7 @@ public class Shipment extends AbstractDataIdentifiableSystemStringIdentifiableBu
 	public static final String FIELD_PLACE_OF_DEPARTURE = "placeOfDeparture";
 	public static final String FIELD_PLACE_OF_ARRIVAL = "placeOfArrival";
 	public static final String FIELD_DATE_OF_DEPARTURE = "dateOfDeparture";
+	public static final String FIELD_DATE_OF_ARRIVAL = "dateOfArrival";
 	public static final String FIELD_DURATION = "duration";
+	public static final String FIELD_STATUS = "status";
 }

@@ -21,4 +21,7 @@ public abstract class AbstractLoadingImpl extends AbstractDataIdentifiableSystem
 	@NotNull
 	private String weight;
 	
+	/**/
+	
+	public static final String FIELD_WEIGHT = "weight";
 }

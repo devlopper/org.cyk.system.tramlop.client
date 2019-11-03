@@ -33,4 +33,11 @@ public abstract class AbstractPersonImpl extends AbstractDataIdentifiableSystemS
 	@Input @InputString @InputStringLineOne
 	private String electronicMailAddress;
 	
+	/**/
+	
+	public static final String FIELD_FIRST_NAME = "firstName";
+	public static final String FIELD_LAST_NAMES = "lastNames";
+	public static final String FIELD_IDENTITY_CARD = "identityCard";
+	public static final String FIELD_PHONE_NUMBER = "phoneNumber";
+	public static final String FIELD_ELECTRONIC_MAIL_ADDRESS = "electronicMailAddress";
 }

@@ -26,7 +26,8 @@ public class ShipmentEditWindowBuilderImpl extends AbstractWindowContainerManage
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_PLACE_OF_DEPARTURE);
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_DATE_OF_DEPARTURE);
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_PLACE_OF_ARRIVAL);
-		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_DURATION);
+		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_DATE_OF_ARRIVAL);
+		//viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_DURATION);
 		
 	}
 

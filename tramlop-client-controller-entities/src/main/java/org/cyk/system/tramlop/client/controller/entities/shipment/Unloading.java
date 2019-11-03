@@ -26,4 +26,9 @@ public class Unloading extends AbstractLoadingImpl implements Serializable {
 	@Input @InputDateTime
 	@NotNull
 	private LocalDateTime dateOfArrival;
+	
+	/**/
+	
+	public static final String FIELD_SHIPMENT = "shipment";
+	public static final String FIELD_DATE_OF_ARRIVAL = "dateOfArrival";
 }

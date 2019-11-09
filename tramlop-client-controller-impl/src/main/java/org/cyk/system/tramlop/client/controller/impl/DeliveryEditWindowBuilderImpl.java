@@ -1,16 +1,14 @@
 package org.cyk.system.tramlop.client.controller.impl;
 import java.io.Serializable;
 
-import org.cyk.system.tramlop.client.controller.entities.Shipment;
-import org.cyk.system.tramlop.client.controller.entities.ShipmentEditWindowBuilder;
+import org.cyk.system.tramlop.client.controller.entities.DeliveryEditWindowBuilder;
 import org.cyk.utility.__kernel__.system.action.SystemAction;
-import org.cyk.utility.__kernel__.system.action.SystemActionCreate;
 import org.cyk.utility.client.controller.component.view.ViewBuilder;
 import org.cyk.utility.client.controller.component.window.AbstractWindowContainerManagedWindowBuilderEditDataImpl;
 import org.cyk.utility.client.controller.data.Data;
 import org.cyk.utility.client.controller.data.Form;
 
-public class ShipmentEditWindowBuilderImpl extends AbstractWindowContainerManagedWindowBuilderEditDataImpl implements ShipmentEditWindowBuilder, Serializable {
+public class DeliveryEditWindowBuilderImpl extends AbstractWindowContainerManagedWindowBuilderEditDataImpl implements DeliveryEditWindowBuilder, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
@@ -22,14 +20,17 @@ public class ShipmentEditWindowBuilderImpl extends AbstractWindowContainerManage
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_LOADING,Loading.FIELD_WEIGHT);
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_LOADING,Loading.FIELD_CUSTOMER);
 		*/
+		/*
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_PLACE_OF_DEPARTURE);
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_DATE_OF_DEPARTURE);
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_PLACE_OF_ARRIVAL);
 		viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_DATE_OF_ARRIVAL);
+		*/
 		//viewBuilder.addInputBuilderByObjectByFieldNames(data,systemAction, Shipment.FIELD_DURATION);
 		
 	}
 
+	/*
 	@Override
 	protected Object __getEntity__(SystemAction systemAction) {
 		Shipment userAccount = (Shipment) super.__getEntity__(systemAction);
@@ -38,5 +39,6 @@ public class ShipmentEditWindowBuilderImpl extends AbstractWindowContainerManage
 		}
 		return userAccount;
 	}
+	*/
 
 }

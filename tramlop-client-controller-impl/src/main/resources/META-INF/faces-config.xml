@@ -7,6 +7,29 @@
 
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
+		
+		<navigation-case>
+			<from-outcome>agreementListView</from-outcome>
+			<to-view-id>/private/agreement/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>agreementReadView</from-outcome>
+			<to-view-id>/private/agreement/read.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>deliveryListView</from-outcome>
+			<to-view-id>/private/delivery/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>deliveryReadView</from-outcome>
+			<to-view-id>/private/delivery/read.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
 		<navigation-case>
 			<from-outcome>productListView</from-outcome>
 			<to-view-id>/private/product/list.jsf</to-view-id>
@@ -42,19 +65,6 @@
 			<to-view-id>/private/task/list.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
-		
-		<navigation-case>
-			<from-outcome>shipmentListView</from-outcome>
-			<to-view-id>/private/shipment/list.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>unloadingListView</from-outcome>
-			<to-view-id>/private/unloading/list.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		
-		
 		
 	</navigation-rule>
 

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import org.cyk.system.tramlop.client.controller.entities.Shipment;
+import org.cyk.system.tramlop.client.controller.entities.Agreement;
 import org.cyk.utility.__kernel__.system.action.SystemActionList;
 import org.cyk.utility.client.controller.component.window.WindowContainerManagedWindowBuilder;
 import org.cyk.utility.client.controller.component.window.WindowContainerManagedWindowBuilderGetter;
@@ -15,12 +15,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class ShipmentListPage extends AbstractPageContainerManagedImpl implements Serializable {
+public class AgreementListPage extends AbstractPageContainerManagedImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	protected WindowContainerManagedWindowBuilder __getWindowContainerManagedWindowBuilder__() {
 		return __inject__(WindowContainerManagedWindowBuilderGetter.class).setContainerManaged(this)
-				.setSystemAction(__inject__(SystemActionList.class).setEntityClass(Shipment.class))
+				.setSystemAction(__inject__(SystemActionList.class).setEntityClass(Agreement.class))
 				.execute().getOutput();
 	}
 	

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
+	
+    <cyk:page value="#{agreementCreatePage}">
+    	<ui:define name="centerCenter">
+    		.
+    		<div class="ui-g">
+    			<div class="ui-g-12">
+    				<div class="ui-g-2">
+    					<p:outputLabel for="customer" value="Client" />
+    				</div>
+    				<div class="ui-g-8">
+    					<p:selectOneMenu id="customer" value="#{agreementCreatePage.agreement.customer}">
+		    				<f:selectItems value="#{agreementCreatePage.customers}" var="customer" itemLabel="#{customer.person.firstName} #{customer.person.lastNames}" itemValue="#{customer}"/>
+		    			</p:selectOneMenu>
+    				</div>
+    				<div class="ui-g-2">
+    					<p:message for="customer" />
+    				</div>
+    			</div>
+    			<div class="ui-g-12">
+    				<div class="ui-g-2">
+    					<p:outputLabel for="product" value="Produit" />
+    				</div>
+    				<div class="ui-g-8">
+    					<p:selectOneMenu id="product" value="#{agreementCreatePage.agreement.product}">
+		    				<f:selectItems value="#{agreementCreatePage.products}" var="product" itemLabel="#{product.name}" itemValue="#{product}"/>
+		    			</p:selectOneMenu>
+    				</div>
+    				<div class="ui-g-2">
+    					<p:message for="product" />
+    				</div>
+    			</div>
+    			<div class="ui-g-12">
+    				<div class="ui-g-2">
+    					<p:outputLabel for="departurePlace" value="Lieu de départ" />
+    				</div>
+    				<div class="ui-g-8">
+    					<p:selectOneMenu id="departurePlace" value="#{agreementCreatePage.agreement.departurePlace}">
+		    				<f:selectItems value="#{agreementCreatePage.departurePlaces}" var="place" itemLabel="#{place.name}" itemValue="#{place}"/>
+		    			</p:selectOneMenu>
+    				</div>
+    				<div class="ui-g-2">
+    					<p:message for="departurePlace" />
+    				</div>
+    			</div>
+    		</div>
+    		<p:separator/>
+    		<h3><h:outputText value="Camions" /></h3>
+    		<div class="ui-g">
+    			<!-- Truck -->
+    			<div class="ui-g-2">
+    				<p:outputLabel for="truck" value="Camion" />
+    			</div>
+    			<div class="ui-g-3">
+    				<p:selectOneMenu id="truck" value="#{agreementCreatePage.truck}">
+	    				<f:selectItems value="#{agreementCreatePage.trucks}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
+	    			</p:selectOneMenu>
+    			</div>
+    			<!-- Driver -->
+    			<div class="ui-g-2">
+    				<p:outputLabel for="driver" value="Conducteur" />
+    			</div>
+    			<div class="ui-g-3">
+    				<p:selectOneMenu id="driver" value="#{agreementCreatePage.driver}">
+	    				<f:selectItems value="#{agreementCreatePage.drivers}" var="driver" itemLabel="#{driver.person.firstName} #{driver.person.lastNames}" itemValue="#{driver}"/>
+	    			</p:selectOneMenu>
+    			</div>
+    			<!-- Command -->
+    			<div class="ui-g-2">
+    				<p:commandButton value="Ajouter" action="#{agreementCreatePage.addTruck}" process="truck,driver" update="trucksDataTable"/>
+    			</div>
+    		</div>
+   			<p:dataTable id="trucksDataTable" value="#{agreementCreatePage.agreement.trucks}" var="truck" >
+   				<p:column headerText="Camion">
+   					<h:outputText value="#{truck.code}" />
+   				</p:column>
+   				<p:column headerText="Conducteur">
+   					<h:outputText value="#{truck.driver.person.firstName} #{truck.driver.person.lastNames}" />
+   				</p:column>
+   			</p:dataTable>
+    		
+    		<p:separator/>
+    		
+    		<h3><h:outputText value="Trajets" /></h3>
+    		
+    		<div class="ui-g">
+    			<!-- Place -->
+    			<div class="ui-g-2">
+    				<p:outputLabel for="arrivalPlace" value="Lieu d'arrivée" />
+    			</div>
+    			<div class="ui-g-8">
+    				<p:selectOneMenu id="arrivalPlace" value="#{agreementCreatePage.arrivalPlace}">
+	    				<f:selectItems value="#{agreementCreatePage.arrivalPlaces}" var="place" itemLabel="#{place.name}" itemValue="#{place}"/>
+	    			</p:selectOneMenu>
+    			</div>
+    			<!-- Command -->
+    			<div class="ui-g-2">
+    				<p:commandButton value="Ajouter" action="#{agreementCreatePage.addArrivalPlace}" process="arrivalPlace" update="arrivalPlacesDataTable"/>
+    			</div>
+    		</div>
+   			<p:dataTable id="arrivalPlacesDataTable" value="#{agreementCreatePage.agreement.arrivalPlaces}" var="place" >
+   				<p:column headerText="Lieu d'arrivée">
+   					<h:outputText value="#{place.name}" />
+   				</p:column>
+   			</p:dataTable>
+    		
+    	</ui:define>
+    </cyk:page>
+</html>

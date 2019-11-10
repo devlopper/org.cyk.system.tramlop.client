@@ -9,6 +9,11 @@
 		<from-view-id>*</from-view-id>
 		
 		<navigation-case>
+			<from-outcome>agreementCreateView</from-outcome>
+			<to-view-id>/private/agreement/create.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>agreementListView</from-outcome>
 			<to-view-id>/private/agreement/list.jsf</to-view-id>
 			<redirect />

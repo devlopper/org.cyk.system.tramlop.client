@@ -23,15 +23,22 @@
         </li>
         <li>
             <p:link outcome="agreementListView">
-                <i class="fa fa-file"/>
+                <i class="fa fa-list"/>
                 <span>Contrat</span>
+            </p:link>
+            <p:link outcome="agreementCreateView">
+                <i class="fa fa-plus"/>
+                <span>Nouveau</span>
             </p:link>
         </li>
         <li class="header">
             Livraison
         </li>
         <li><p:link outcome="deliveryListView"><i class="fa fa-upload"/><span>Livraisons</span></p:link></li>
-        
+        <li><p:link outcome="deliveryWeighEmptyView"><span>Peser à vide</span></p:link></li>
+        <li><p:link outcome="deliveryLoadView"><span>Charger</span></p:link></li>
+        <li><p:link outcome="deliveryWeighView"><span>Peser chargé</span></p:link></li>
+        <li><p:link outcome="deliveryReceiveView"><span>Réceptionner</span></p:link></li>
         
         <li class="header">
             Paramètrage

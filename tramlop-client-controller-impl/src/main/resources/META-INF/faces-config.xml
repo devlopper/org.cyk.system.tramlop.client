@@ -25,6 +25,26 @@
 		</navigation-case>
 		
 		<navigation-case>
+			<from-outcome>deliveryWeighEmptyView</from-outcome>
+			<to-view-id>/private/delivery/weighempty.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>deliveryLoadView</from-outcome>
+			<to-view-id>/private/delivery/load.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>deliveryWeighView</from-outcome>
+			<to-view-id>/private/delivery/weigh.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>deliveryReceiveView</from-outcome>
+			<to-view-id>/private/delivery/receive.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>deliveryListView</from-outcome>
 			<to-view-id>/private/delivery/list.jsf</to-view-id>
 			<redirect />

@@ -17,7 +17,8 @@
     					<p:outputLabel for="customer" value="Client" />
     				</div>
     				<div class="ui-g-8">
-    					<p:selectOneMenu id="customer" value="#{agreementCreatePage.agreement.customer}">
+    					<p:selectOneMenu id="customer" value="#{agreementCreatePage.agreement.customer}" converter="#{objectConverter}">
+    						<f:selectItem itemLabel="Veuillez sélectionner un client" />
 		    				<f:selectItems value="#{agreementCreatePage.customers}" var="customer" itemLabel="#{customer.person.firstName} #{customer.person.lastNames}" itemValue="#{customer}"/>
 		    			</p:selectOneMenu>
     				</div>
@@ -30,7 +31,8 @@
     					<p:outputLabel for="product" value="Produit" />
     				</div>
     				<div class="ui-g-8">
-    					<p:selectOneMenu id="product" value="#{agreementCreatePage.agreement.product}">
+    					<p:selectOneMenu id="product" value="#{agreementCreatePage.agreement.product}" converter="#{objectConverter}">
+    						<f:selectItem itemLabel="Veuillez sélectionner un produit" />
 		    				<f:selectItems value="#{agreementCreatePage.products}" var="product" itemLabel="#{product.name}" itemValue="#{product}"/>
 		    			</p:selectOneMenu>
     				</div>
@@ -43,7 +45,8 @@
     					<p:outputLabel for="departurePlace" value="Lieu de départ" />
     				</div>
     				<div class="ui-g-8">
-    					<p:selectOneMenu id="departurePlace" value="#{agreementCreatePage.agreement.departurePlace}">
+    					<p:selectOneMenu id="departurePlace" value="#{agreementCreatePage.agreement.departurePlace}" converter="#{objectConverter}">
+    						<f:selectItem itemLabel="Veuillez sélectionner un lieu de départ" />
 		    				<f:selectItems value="#{agreementCreatePage.departurePlaces}" var="place" itemLabel="#{place.name}" itemValue="#{place}"/>
 		    			</p:selectOneMenu>
     				</div>
@@ -52,7 +55,50 @@
     				</div>
     			</div>
     		</div>
+    		
     		<p:separator/>
+    		
+    		<h3><h:outputText value="Trajets" /></h3>   		
+    		<div class="ui-g">
+    			<!-- Place -->
+    			<div class="ui-g-2">
+    				<h4>
+    					Le lieu d'arriver ne peut pas être identique au lieu de départ
+    				</h4>
+    				<p:outputLabel for="arrivalPlace" value="Lieu d'arrivée" />
+    			</div>
+    			<div class="ui-g-8">
+    				<p:selectOneMenu id="arrivalPlace" value="#{agreementCreatePage.arrivalPlace}" converter="#{objectConverter}">
+    					<f:selectItem itemLabel="Veuillez sélectionner un lieu d'arrivée" />
+	    				<f:selectItems value="#{agreementCreatePage.arrivalPlaces}" var="place" itemLabel="#{place.name}" itemValue="#{place}"/>
+	    			</p:selectOneMenu>
+    			</div>
+    			<!-- Command -->
+    			<div class="ui-g-2">
+    				<cyk:commandable value="#{agreementCreatePage.addArrivalPlaceCommandable}" />
+    			</div>
+    		</div>
+   			<p:dataTable id="arrivalPlaces" value="#{agreementCreatePage.agreement.arrivalPlaces}" var="place" emptyMessage="Veuillez ajouter des lieux d'arrivée">
+   				<p:column headerText="Lieu d'arrivée" width="10%">
+   					<h:outputText value="#{place.name}" />
+   				</p:column>
+   				<p:column headerText="Durée">
+   					<div class="ui-g">
+   						<div class="ui-g-1"><h:outputText value="Jour" /></div>
+   						<div class="ui-g-3"><p:inputNumber/></div>
+   						<div class="ui-g-1"><h:outputText value="Heure" /></div>
+   						<div class="ui-g-3"><p:inputNumber/></div>
+   						<div class="ui-g-1"><h:outputText value="Minute" /></div>
+   						<div class="ui-g-3"><p:inputNumber/></div>
+   					</div>
+   				</p:column>
+   				<p:column width="10%">
+   					<p:commandButton value="Supprimer" action="#{agreementCreatePage.removeArrivalPlace(place)}" immediate="true" update="form:arrivalPlace,arrivalPlaces"/>
+   				</p:column>
+   			</p:dataTable>
+    		
+    		<p:separator/>
+    		
     		<h3><h:outputText value="Camions" /></h3>
     		<div class="ui-g">
     			<!-- Truck -->
@@ -60,7 +106,12 @@
     				<p:outputLabel for="truck" value="Camion" />
     			</div>
     			<div class="ui-g-3">
-    				<p:selectOneMenu id="truck" value="#{agreementCreatePage.truck}">
+    				<h4>
+    					Liste des camions libre. Un camion est libre si il n'est pas associés à un contrat en cours. 
+    					Un contrat est cours si il à été marqué comme tel
+    				</h4>
+    				<p:selectOneMenu id="truck" value="#{agreementCreatePage.truck}" converter="#{objectConverter}">
+    					<f:selectItem itemLabel="Veuillez sélectionner un camion" />
 	    				<f:selectItems value="#{agreementCreatePage.trucks}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
 	    			</p:selectOneMenu>
     			</div>
@@ -69,49 +120,33 @@
     				<p:outputLabel for="driver" value="Conducteur" />
     			</div>
     			<div class="ui-g-3">
-    				<p:selectOneMenu id="driver" value="#{agreementCreatePage.driver}">
+    				<h4>
+    					Voir règles des camions
+    				</h4>
+    				<p:selectOneMenu id="driver" value="#{agreementCreatePage.driver}" converter="#{objectConverter}">
+    					<f:selectItem itemLabel="Veuillez sélectionner un conducteur" />
 	    				<f:selectItems value="#{agreementCreatePage.drivers}" var="driver" itemLabel="#{driver.person.firstName} #{driver.person.lastNames}" itemValue="#{driver}"/>
 	    			</p:selectOneMenu>
     			</div>
     			<!-- Command -->
-    			<div class="ui-g-2">
-    				<p:commandButton value="Ajouter" action="#{agreementCreatePage.addTruck}" process="truck,driver" update="trucksDataTable"/>
+    			<div class="ui-g-2"> 				
+    				<cyk:commandable value="#{agreementCreatePage.addTruckCommandable}" />
     			</div>
     		</div>
-   			<p:dataTable id="trucksDataTable" value="#{agreementCreatePage.agreement.trucks}" var="truck" >
-   				<p:column headerText="Camion">
+   			<p:dataTable id="trucks" value="#{agreementCreatePage.agreement.trucks}" var="truck" emptyMessage="Veuillez ajouter des camions">
+   				<p:column headerText="Camion" width="15%">
    					<h:outputText value="#{truck.code}" />
    				</p:column>
    				<p:column headerText="Conducteur">
    					<h:outputText value="#{truck.driver.person.firstName} #{truck.driver.person.lastNames}" />
    				</p:column>
-   			</p:dataTable>
-    		
-    		<p:separator/>
-    		
-    		<h3><h:outputText value="Trajets" /></h3>
-    		
-    		<div class="ui-g">
-    			<!-- Place -->
-    			<div class="ui-g-2">
-    				<p:outputLabel for="arrivalPlace" value="Lieu d'arrivée" />
-    			</div>
-    			<div class="ui-g-8">
-    				<p:selectOneMenu id="arrivalPlace" value="#{agreementCreatePage.arrivalPlace}">
-	    				<f:selectItems value="#{agreementCreatePage.arrivalPlaces}" var="place" itemLabel="#{place.name}" itemValue="#{place}"/>
-	    			</p:selectOneMenu>
-    			</div>
-    			<!-- Command -->
-    			<div class="ui-g-2">
-    				<p:commandButton value="Ajouter" action="#{agreementCreatePage.addArrivalPlace}" process="arrivalPlace" update="arrivalPlacesDataTable"/>
-    			</div>
-    		</div>
-   			<p:dataTable id="arrivalPlacesDataTable" value="#{agreementCreatePage.agreement.arrivalPlaces}" var="place" >
-   				<p:column headerText="Lieu d'arrivée">
-   					<h:outputText value="#{place.name}" />
+   				<p:column width="10%">
+   					<p:commandButton value="Supprimer" action="#{agreementCreatePage.removeTruck(truck)}" immediate="true" update="form:truck,form:driver,trucks"/>
    				</p:column>
    			</p:dataTable>
     		
+    		<p:separator/>
+    		<cyk:commandable value="#{agreementCreatePage.createCommandable}" />   		
     	</ui:define>
     </cyk:page>
 </html>

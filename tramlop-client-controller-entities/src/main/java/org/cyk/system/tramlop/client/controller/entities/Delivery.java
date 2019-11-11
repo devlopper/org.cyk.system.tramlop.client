@@ -12,4 +12,7 @@ import lombok.experimental.Accessors;
 public class Delivery extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private Product product;
+	
+	public static final String FIELD_PRODUCT = "product";
 }

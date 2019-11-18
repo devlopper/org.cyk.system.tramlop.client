@@ -25,8 +25,8 @@
 		</navigation-case>
 		
 		<navigation-case>
-			<from-outcome>deliveryWeighEmptyView</from-outcome>
-			<to-view-id>/private/delivery/weighempty.jsf</to-view-id>
+			<from-outcome>deliveryWeighBeforeChargeView</from-outcome>
+			<to-view-id>/private/delivery/weighbeforecharge.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>

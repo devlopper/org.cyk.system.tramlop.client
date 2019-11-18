@@ -26,7 +26,7 @@ public abstract class AbstractDeliveryPage extends AbstractPageContainerManagedI
 	protected void __listenPostConstruct__() {
 		super.__listenPostConstruct__();
 		try {
-			trucks = __inject__(TruckController.class).read(new Properties().setIsPageable(Boolean.FALSE));
+			trucks = __readTrucks__();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,6 +41,14 @@ public abstract class AbstractDeliveryPage extends AbstractPageContainerManagedI
 			}
 		);
 		saveCommandable = saveCommandableBuilder.execute().getOutput();
+	}
+	
+	protected Collection<Truck> __readTrucks__() {
+		return __inject__(TruckController.class).read(__getReadTrucksProperties__());
+	}
+	
+	protected Properties __getReadTrucksProperties__() {
+		return new Properties().setIsPageable(Boolean.FALSE);
 	}
 	
 	public void create() {

@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import org.cyk.system.tramlop.client.controller.api.TruckController;
 import org.cyk.system.tramlop.server.persistence.api.TruckPersistence;
 import org.cyk.utility.__kernel__.properties.Properties;
 
@@ -16,10 +15,14 @@ import lombok.Setter;
 public class DeliveryWeighBeforeChargePage extends AbstractDeliveryPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Override
+	protected Properties __getReadTrucksProperties__() {
+		return super.__getReadTrucksProperties__()
+				.setQueryIdentifier(TruckPersistence.READ_WHERE_AGREEMENT_CLOSED_IS_FALSE_EXIST_AND_DELIVERY_CLOSED_IS_FALSE_DOES_NOT_EXIST);
+	}
+	
 	public void create() {
-		trucks = __inject__(TruckController.class).read(new Properties()
-				.setQueryIdentifier(TruckPersistence.READ_WHERE_AGREEMENT_CLOSED_IS_FALSE_EXIST_AND_DELIVERY_CLOSED_IS_FALSE_DOES_NOT_EXIST)
-				.setIsQueryResultPaginated(Boolean.FALSE));
+		
 	}
 	
 	@Override

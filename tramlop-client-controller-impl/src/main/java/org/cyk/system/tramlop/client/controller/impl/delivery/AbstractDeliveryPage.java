@@ -1,10 +1,8 @@
 package org.cyk.system.tramlop.client.controller.impl.delivery;
 
 import java.io.Serializable;
-import java.util.Collection;
 
-import org.cyk.system.tramlop.client.controller.api.TruckController;
-import org.cyk.system.tramlop.client.controller.entities.Truck;
+import org.cyk.system.tramlop.client.controller.entities.SelectionOneTruck;
 import org.cyk.utility.__kernel__.properties.Properties;
 import org.cyk.utility.__kernel__.system.action.SystemActionCustom;
 import org.cyk.utility.client.controller.component.command.Commandable;
@@ -19,39 +17,37 @@ public abstract class AbstractDeliveryPage extends AbstractPageContainerManagedI
 	private static final long serialVersionUID = 1L;
 
 	protected Commandable saveCommandable;
-	protected Collection<Truck> trucks;
-	protected Truck truck;
+	protected SelectionOneTruck truck;
 	
 	@Override
 	protected void __listenPostConstruct__() {
 		super.__listenPostConstruct__();
 		try {
-			trucks = __readTrucks__();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			truck = __getTrucks__();
+		} catch (Exception exception) {
+			exception.printStackTrace();
 		}
 		CommandableBuilder saveCommandableBuilder = __inject__(CommandableBuilder.class);
 		saveCommandableBuilder.setName("Enregistrer").setCommandFunctionActionClass(SystemActionCustom.class).addCommandFunctionTryRunRunnable(
 			new Runnable() {
 				@Override
 				public void run() {
-					create();
+					__save__();
 				}
 			}
 		);
 		saveCommandable = saveCommandableBuilder.execute().getOutput();
 	}
 	
-	protected Collection<Truck> __readTrucks__() {
-		return __inject__(TruckController.class).read(__getReadTrucksProperties__());
+	protected SelectionOneTruck __getTrucks__() {
+		return new SelectionOneTruck(__getReadTrucksProperties__());
 	}
 	
 	protected Properties __getReadTrucksProperties__() {
 		return new Properties().setIsPageable(Boolean.FALSE);
 	}
 	
-	public void create() {
+	protected void __save__() {
 		
 	}
 	

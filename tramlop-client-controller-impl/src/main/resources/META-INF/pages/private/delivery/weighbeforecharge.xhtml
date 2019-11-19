@@ -13,12 +13,21 @@
     		<div class="ui-g">
     			<div class="ui-g-2"><p:outputLabel for="truck" value="Camion" /></div>
     			<div class="ui-g-6">
-    				<p:selectOneMenu id="truck" value="#{deliveryWeighBeforeChargePage.truck}" converter="#{objectConverter}" required="true" filter="true">
-   						<f:selectItem itemLabel="Veuillez sélectionner un camion" />
-	    				<f:selectItems value="#{deliveryWeighBeforeChargePage.trucks}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
+    				<p:selectOneMenu id="truck" value="#{deliveryWeighBeforeChargePage.truck.value}" converter="#{objectConverter}" required="true" filter="true">
+   						<f:selectItem itemLabel="#{deliveryWeighBeforeChargePage.truck.message}" />
+	    				<f:selectItems value="#{deliveryWeighBeforeChargePage.truck.choices}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
 	    			</p:selectOneMenu>
     			</div>
     			<div class="ui-g-4"><p:message for="truck" /></div>
+    			
+    			<div class="ui-g-2"><p:outputLabel for="driver" value="Conducteur" /></div>
+    			<div class="ui-g-6">
+    				<p:selectOneMenu id="driver" value="#{deliveryWeighBeforeChargePage.driver.value}" converter="#{objectConverter}" required="true" filter="true">
+    					<f:selectItem itemLabel="#{deliveryWeighBeforeChargePage.driver.message}" />
+	    				<f:selectItems value="#{deliveryWeighBeforeChargePage.driver.choices}" var="driver" itemLabel="#{driver.person.firstName} #{driver.person.lastNames}" itemValue="#{driver}"/>
+	    			</p:selectOneMenu>
+    			</div>
+    			<div class="ui-g-4"><p:message for="driver" /></div>
     			
     			<div class="ui-g-2"><p:outputLabel for="weight" value="Poids en kilogramme" /></div>
     			<div class="ui-g-6">

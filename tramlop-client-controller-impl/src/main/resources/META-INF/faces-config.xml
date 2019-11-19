@@ -25,6 +25,11 @@
 		</navigation-case>
 		
 		<navigation-case>
+			<from-outcome>deliveryBoardView</from-outcome>
+			<to-view-id>/private/delivery/board.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>deliveryWeighBeforeChargeView</from-outcome>
 			<to-view-id>/private/delivery/weighbeforecharge.jsf</to-view-id>
 			<redirect />

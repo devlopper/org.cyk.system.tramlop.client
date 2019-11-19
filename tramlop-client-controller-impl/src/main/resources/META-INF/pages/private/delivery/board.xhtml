@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
+	
+    <cyk:page value="#{deliveryBoardPage}">
+    	<ui:define name="centerCenter">.
+    		<div class="ui-g">
+    			<div class="ui-g-12">
+    				<h:outputText value="Liste des livraisons en cours" />
+    			</div>
+    			<div class="ui-g-12">
+    				<ui:include src="__list__.xhtml">
+    					<ui:param name="deliveries" value="#{deliveryBoardPage.runningDeliveries}"/>
+    				</ui:include>
+    			</div>
+    		</div>
+    		<p:separator/>
+    		<div class="ui-g">
+    			<div class="ui-g-12">
+    				<h:outputText value="Liste des livraisons terminées" />
+    			</div>
+    			<div class="ui-g-12">
+    				<p:dataTable value="#{deliveryBoardPage.closedDeliveries}" var="delivery">
+    					<p:column headerText="Camion">
+    						<h:outputText value="#{delivery.truck}" />
+    					</p:column>
+    					<p:column headerText="Statut">
+    						<h:outputText value="???" />
+    					</p:column>
+    				</p:dataTable>
+    			</div>
+    		</div>
+    	</ui:define>
+    </cyk:page>
+    
+</html>

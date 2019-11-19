@@ -18,6 +18,7 @@ import lombok.Setter;
 public class DeliveryWeighBeforeChargePage extends AbstractDeliveryPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	Delivery delivery = new Delivery();
 	protected SelectionOneDriver driver;
 	
 	@Override
@@ -33,8 +34,8 @@ public class DeliveryWeighBeforeChargePage extends AbstractDeliveryPage implemen
 	}
 	
 	public void __save__() {
-		Delivery delivery = new Delivery();
-		delivery.setTruck(truck.getValue()).setDriver(driver.getValue());
+		delivery.setTruck(truck.getValue());
+		delivery.setDriver(driver.getValue());
 		__inject__(DeliveryController.class).create(delivery);
 	}
 	

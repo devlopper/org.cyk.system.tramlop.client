@@ -11,6 +11,7 @@ import org.cyk.system.tramlop.client.controller.entities.Delivery;
 import org.cyk.system.tramlop.client.controller.entities.Task;
 import org.cyk.utility.__kernel__.properties.Properties;
 import org.cyk.utility.client.controller.web.jsf.primefaces.AbstractPageContainerManagedImpl;
+import org.cyk.utility.client.controller.web.jsf.primefaces.dialog.DialogOpener;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,10 @@ public class DeliveryBoardPage extends AbstractPageContainerManagedImpl implemen
 		runningDeliveries = __inject__(DeliveryController.class).read(new Properties().setFields(Delivery.FIELD_TASKS+","+Delivery.FIELD_TASKS+"."+Task.FIELD_EXISTENCE
 				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_WEIGHT_IN_KILO_GRAM+","+Delivery.FIELD_TASKS+"."+Task.FIELD_PRODUCT));
 		closedDeliveries = __inject__(DeliveryController.class).read();
+	}
+	
+	public void showDialog(Delivery delivery) {
+		DialogOpener.getInstance().openByEntity(delivery);
 	}
 	
 	@Override

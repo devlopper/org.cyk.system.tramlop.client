@@ -9,8 +9,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class DeliveryReadPage extends AbstractDeliveryReadPage implements Serializable {
+public class DeliveryReadDialogPage extends AbstractDeliveryReadPage implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Override
+	public Boolean getIsRenderTypeDialog() {
+		return Boolean.TRUE;
+	}
 	
 }

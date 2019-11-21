@@ -8,6 +8,8 @@ import javax.inject.Named;
 
 import org.cyk.system.tramlop.client.controller.api.DeliveryController;
 import org.cyk.system.tramlop.client.controller.entities.Delivery;
+import org.cyk.system.tramlop.client.controller.entities.Task;
+import org.cyk.utility.__kernel__.properties.Properties;
 import org.cyk.utility.client.controller.web.jsf.primefaces.AbstractPageContainerManagedImpl;
 
 import lombok.Getter;
@@ -22,7 +24,8 @@ public class DeliveryBoardPage extends AbstractPageContainerManagedImpl implemen
 	@Override
 	protected void __listenPostConstruct__() {
 		super.__listenPostConstruct__();
-		runningDeliveries = __inject__(DeliveryController.class).read();
+		runningDeliveries = __inject__(DeliveryController.class).read(new Properties().setFields(Delivery.FIELD_TASKS+","+Delivery.FIELD_TASKS+"."+Task.FIELD_EXISTENCE
+				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_WEIGHT_IN_KILO_GRAM+","+Delivery.FIELD_TASKS+"."+Task.FIELD_PRODUCT));
 		closedDeliveries = __inject__(DeliveryController.class).read();
 	}
 	

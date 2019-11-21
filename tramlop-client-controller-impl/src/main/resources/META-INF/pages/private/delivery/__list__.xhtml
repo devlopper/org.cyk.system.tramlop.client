@@ -14,21 +14,50 @@
   		<p:column headerText="Camion">
   			<h:outputText value="#{delivery.truck}" />
   		</p:column>
-  		<p:column headerText="Produit">
-  			<h:outputText value="#{delivery.product}" />
+  		
+  		<p:column headerText="Poids à vide avant chargement">
+  			<h:outputText value="#{delivery.getTaskAt(0).weightInKiloGram}" />
   		</p:column>
+  		<p:column headerText="Chargement">
+  			<h:outputText value="#{delivery.getTaskAt(1).product}" />
+  		</p:column>
+  		<p:column headerText="Poids après chargement">
+  			<h:outputText value="#{delivery.getTaskAt(2).weightInKiloGram}" />
+  		</p:column>
+  		<!--
+  		<p:column headerText="Départ">
+  			<h:outputText value="#{delivery.getTaskAt(3)}/#{delivery.getTaskAt(3).existence.creationDate}" />
+  		</p:column>
+  		<p:column headerText="Arrivée">
+  			<h:outputText value="#{delivery.getTaskAt(4)}/#{delivery.getTaskAt(4).existence.creationDate}" />
+  		</p:column>
+  		-->
+  		<p:column headerText="Poids avant déchargement">
+  			<h:outputText value="#{delivery.getTaskAt(5).weightInKiloGram}" />
+  		</p:column>
+  		<!--
+  		<p:column headerText="Déchargement">
+  			<h:outputText value="#{delivery.getTaskAt(6)}/#{delivery.getTaskAt(6).existence.creationDate}" />
+  		</p:column>
+  		-->
+  		<p:column headerText="Poids à vide après déchargement">
+  			<h:outputText value="#{delivery.getTaskAt(7).weightInKiloGram}" />
+  		</p:column>
+  		<!--
   		<p:column headerText="Poids chargé">
   			<h:outputText value="#{delivery.weightInKiloGram}" />
   		</p:column>
+  		
   		<p:column headerText="Lieu et date de départ">
-  			<h:outputText value="#{delivery.agreement.departurePlace} #{delivery.tasks.get(0).existence.creationDate}" />
+  			<h:outputText value="#{delivery.agreement.departurePlace} #{delivery.getTaskAt(0).existence.creationDate}" />
   		</p:column>
   		<p:column headerText="Destination">
   			<h:outputText value="#{delivery.arrivalPlace}" />
   		</p:column>
   		<p:column headerText="Statut">
-  			<h:outputText value="#{delivery.tasks.get(delivery.tasks.get(0).size()-1).name}" />
+  			<h:outputText value="#{delivery.getTaskAt(delivery.getTaskAt(0).size()-1).name}" />
   		</p:column>
+  		-->
   	</p:dataTable>	
 
 </ui:composition>

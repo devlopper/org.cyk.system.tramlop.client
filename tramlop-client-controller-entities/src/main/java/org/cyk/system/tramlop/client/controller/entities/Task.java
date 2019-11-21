@@ -12,4 +12,14 @@ import lombok.experimental.Accessors;
 public class Task extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringNamableImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private Weighing weighing;
+	private Integer weightInKiloGram;
+	private Product product;
+	private Place unloadingPlace;
+	private Existence existence;
+	
+	public static final String FIELD_EXISTENCE = "existence";
+	public static final String FIELD_WEIGHT_IN_KILO_GRAM = "weightInKiloGram";
+	public static final String FIELD_PRODUCT = "product";
+	
 }

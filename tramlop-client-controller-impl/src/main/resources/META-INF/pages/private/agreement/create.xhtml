@@ -26,20 +26,7 @@
     					<p:message for="customer" />
     				</div>
     			</div>
-    			<div class="ui-g-12">
-    				<div class="ui-g-2">
-    					<p:outputLabel for="product" value="Produit" />
-    				</div>
-    				<div class="ui-g-8">
-    					<p:selectOneMenu id="product" value="#{agreementCreatePage.agreement.product}" converter="#{objectConverter}">
-    						<f:selectItem itemLabel="Veuillez sélectionner un produit" />
-		    				<f:selectItems value="#{agreementCreatePage.products}" var="product" itemLabel="#{product.name}" itemValue="#{product}"/>
-		    			</p:selectOneMenu>
-    				</div>
-    				<div class="ui-g-2">
-    					<p:message for="product" />
-    				</div>
-    			</div>
+    			
     			<div class="ui-g-12">
     				<div class="ui-g-2">
     					<p:outputLabel for="departurePlace" value="Lieu de départ" />
@@ -57,78 +44,87 @@
     		</div>
     		
     		<p:separator/>
-    		
-    		<h3><h:outputText value="Trajets" /></h3>   		
-    		<div class="ui-g">
-    			<!-- Place -->
-    			<div class="ui-g-2">
-    				<h4>
-    					Le lieu d'arriver ne peut pas être identique au lieu de départ
-    				</h4>
-    				<p:outputLabel for="arrivalPlace" value="Lieu d'arrivée" />
-    			</div>
-    			<div class="ui-g-8">
-    				<p:selectOneMenu id="arrivalPlace" value="#{agreementCreatePage.arrivalPlace}" converter="#{objectConverter}">
-    					<f:selectItem itemLabel="Veuillez sélectionner un lieu d'arrivée" />
-	    				<f:selectItems value="#{agreementCreatePage.arrivalPlaces}" var="place" itemLabel="#{place.name}" itemValue="#{place}"/>
-	    			</p:selectOneMenu>
-    			</div>
-    			<!-- Command -->
-    			<div class="ui-g-2">
-    				<cyk:commandable value="#{agreementCreatePage.addArrivalPlaceCommandable}" />
-    			</div>
-    		</div>
-   			<p:dataTable id="arrivalPlaces" value="#{agreementCreatePage.agreement.arrivalPlaces}" var="place" emptyMessage="Veuillez ajouter des lieux d'arrivée">
-   				<p:column headerText="Lieu d'arrivée" width="10%">
-   					<h:outputText value="#{place.name}" />
-   				</p:column>
-   				<p:column headerText="Durée">
-   					<div class="ui-g">
-   						<div class="ui-g-1"><h:outputText value="Jour" /></div>
-   						<div class="ui-g-3"><p:inputNumber/></div>
-   						<div class="ui-g-1"><h:outputText value="Heure" /></div>
-   						<div class="ui-g-3"><p:inputNumber/></div>
-   						<div class="ui-g-1"><h:outputText value="Minute" /></div>
-   						<div class="ui-g-3"><p:inputNumber/></div>
-   					</div>
-   				</p:column>
-   				<p:column width="10%">
-   					<p:commandButton value="Supprimer" action="#{agreementCreatePage.removeArrivalPlace(place)}" immediate="true" update="form:arrivalPlace,arrivalPlaces"/>
-   				</p:column>
-   			</p:dataTable>
+    		<ui:decorate template="/input/select/many/dataTable.xhtml">
+    			<ui:param name="controller" value="#{agreementCreatePage}"/>
+    			<ui:param name="addCommandable" value="#{agreementCreatePage.addProductCommandable}"/>
+    			<ui:param name="selection" value="#{agreementCreatePage.products}"/>
+    			<ui:param name="selectableInputId" value="product"/>
+    			<ui:param name="dataTableId" value="products"/>
+    			<ui:param name="selectableLabel" value="Produit"/>
+    			<ui:param name="header" value="Produits"/>
+    			
+    			<ui:define name="dataTableColumnsOthers">
+	   				<p:column headerText="Poids en tonne">
+	   					<p:inputNumber/>
+	   				</p:column>
+    			</ui:define>    			
+    		</ui:decorate>
     		
     		<p:separator/>
+    		<ui:decorate template="/input/select/many/dataTable.xhtml">
+    			<ui:param name="controller" value="#{agreementCreatePage}"/>
+    			<ui:param name="addCommandable" value="#{agreementCreatePage.addArrivalPlaceCommandable}"/>
+    			<ui:param name="selection" value="#{agreementCreatePage.arrivalPlaces}"/>
+    			<ui:param name="selectableInputId" value="arrivalPlace"/>
+    			<ui:param name="dataTableId" value="arrivalPlaces"/>
+    			<ui:param name="selectableLabel" value="Lieu d'arrivée"/>
+    			<ui:param name="header" value="Trajets"/>
+    			
+    			<ui:define name="dataTableColumnsOthers">
+	   				<p:column headerText="Durée">
+	   					<div class="ui-g">
+	   						<div class="ui-g-1"><h:outputText value="Jour" /></div>
+	   						<div class="ui-g-3"><p:inputNumber/></div>
+	   						<div class="ui-g-1"><h:outputText value="Heure" /></div>
+	   						<div class="ui-g-3"><p:inputNumber/></div>
+	   						<div class="ui-g-1"><h:outputText value="Minute" /></div>
+	   						<div class="ui-g-3"><p:inputNumber/></div>
+	   					</div>
+	   				</p:column>
+    			</ui:define>    			
+    		</ui:decorate>
+
+    		<p:separator/>
+    		<ui:decorate template="/input/select/many/dataTable.xhtml">
+    			<ui:param name="controller" value="#{agreementCreatePage}"/>
+    			<ui:param name="addCommandable" value="#{agreementCreatePage.addTruckCommandable}"/>
+    			<ui:param name="selection" value="#{agreementCreatePage.trucks}"/>
+    			<ui:param name="selectableInputId" value="truck"/>
+    			<ui:param name="dataTableId" value="trucks"/>
+    			<ui:param name="selectableLabel" value="Camion"/>
+    			<ui:param name="header" value="Camions"/>
+    			
+    			<ui:define name="dataTableColumnsOthers">
+	   				<p:column headerText="Conducteur">
+	   					<p:selectOneMenu id="driver" value="#{selected.driver}" converter="#{objectConverter}">
+	    					<f:selectItem itemLabel="Veuillez sélectionner un conducteur" />
+		    				<f:selectItems value="#{agreementCreatePage.drivers}" var="driver" itemLabel="#{driver.person.firstName} #{driver.person.lastNames}" itemValue="#{driver}"/>
+		    			</p:selectOneMenu>
+	   				</p:column>
+    			</ui:define>    			
+    		</ui:decorate>
     		
+    		<!--
     		<h3><h:outputText value="Camions" /></h3>
     		<div class="ui-g">
-    			<!-- Truck -->
     			<div class="ui-g-2">
     				<p:outputLabel for="truck" value="Camion" />
     			</div>
     			<div class="ui-g-3">
-    				<h4>
-    					Liste des camions libre. Un camion est libre si il n'est pas associés à un contrat en cours. 
-    					Un contrat est cours si il à été marqué comme tel
-    				</h4>
     				<p:selectOneMenu id="truck" value="#{agreementCreatePage.truck}" converter="#{objectConverter}">
     					<f:selectItem itemLabel="Veuillez sélectionner un camion" />
 	    				<f:selectItems value="#{agreementCreatePage.trucks}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
 	    			</p:selectOneMenu>
     			</div>
-    			<!-- Driver -->
     			<div class="ui-g-2">
     				<p:outputLabel for="driver" value="Conducteur" />
     			</div>
     			<div class="ui-g-3">
-    				<h4>
-    					Voir règles des camions
-    				</h4>
     				<p:selectOneMenu id="driver" value="#{agreementCreatePage.driver}" converter="#{objectConverter}">
     					<f:selectItem itemLabel="Veuillez sélectionner un conducteur" />
 	    				<f:selectItems value="#{agreementCreatePage.drivers}" var="driver" itemLabel="#{driver.person.firstName} #{driver.person.lastNames}" itemValue="#{driver}"/>
 	    			</p:selectOneMenu>
     			</div>
-    			<!-- Command -->
     			<div class="ui-g-2"> 				
     				<cyk:commandable value="#{agreementCreatePage.addTruckCommandable}" />
     			</div>
@@ -144,7 +140,7 @@
    					<p:commandButton value="Supprimer" action="#{agreementCreatePage.removeTruck(truck)}" immediate="true" update="form:truck,form:driver,trucks"/>
    				</p:column>
    			</p:dataTable>
-    		
+    		-->
     		<p:separator/>
     		<cyk:commandable value="#{agreementCreatePage.createCommandable}" />   		
     	</ui:define>

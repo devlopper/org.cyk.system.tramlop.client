@@ -2,21 +2,22 @@ package org.cyk.system.tramlop.client.controller.impl;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.cyk.system.tramlop.client.controller.api.AgreementController;
 import org.cyk.system.tramlop.client.controller.api.CustomerController;
 import org.cyk.system.tramlop.client.controller.api.DriverController;
 import org.cyk.system.tramlop.client.controller.api.PlaceController;
-import org.cyk.system.tramlop.client.controller.api.ProductController;
-import org.cyk.system.tramlop.client.controller.api.TruckController;
 import org.cyk.system.tramlop.client.controller.entities.Agreement;
 import org.cyk.system.tramlop.client.controller.entities.Customer;
 import org.cyk.system.tramlop.client.controller.entities.Driver;
 import org.cyk.system.tramlop.client.controller.entities.Place;
 import org.cyk.system.tramlop.client.controller.entities.Product;
 import org.cyk.system.tramlop.client.controller.entities.Truck;
+import org.cyk.utility.__kernel__.instance.SelectionMany;
 import org.cyk.utility.__kernel__.properties.Properties;
 import org.cyk.utility.__kernel__.system.action.SystemActionCreate;
 import org.cyk.utility.__kernel__.system.action.SystemActionCustom;
@@ -35,19 +36,22 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 
 	private Agreement agreement;
 	private Collection<Customer> customers;
-	private Collection<Product> products;
-	private Collection<Truck> trucks;
-	private Truck truck;
+	//private Collection<Truck> trucks;
+	//private Truck truck;
 	private Collection<Driver> drivers;
-	private Driver driver;
+	//private Driver driver;
 	private Collection<Place> departurePlaces;
 	private Place departurePlace;
-	private Collection<Place> arrivalPlaces;
-	private Place arrivalPlace;
 	private Integer productWeightInKiloGram;
+	
+	private SelectionMany<Place> arrivalPlaces;
+	private SelectionMany<Product> products;
+	private SelectionMany<Truck> trucks;
+	//private SelectionMany<Driver> drivers;
 	
 	private Commandable addTruckCommandable;
 	private Commandable addArrivalPlaceCommandable;
+	private Commandable addProductCommandable;
 	private Commandable createCommandable;
 	
 	@Override
@@ -56,11 +60,13 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 		agreement = new Agreement();
 		try {
 			customers = __inject__(CustomerController.class).read(new Properties().setIsPageable(Boolean.FALSE));
-			products = __inject__(ProductController.class).read(new Properties().setIsPageable(Boolean.FALSE));
-			trucks = __inject__(TruckController.class).read(new Properties().setIsPageable(Boolean.FALSE));
+			//trucks = __inject__(TruckController.class).read(new Properties().setIsPageable(Boolean.FALSE));
 			drivers = __inject__(DriverController.class).read(new Properties().setIsPageable(Boolean.FALSE));
 			departurePlaces = __inject__(PlaceController.class).read(new Properties().setIsPageable(Boolean.FALSE));
-			arrivalPlaces = __inject__(PlaceController.class).read(new Properties().setIsPageable(Boolean.FALSE));
+			products = new SelectionMany<Product>(Product.class);
+			arrivalPlaces = new SelectionMany<Place>(Place.class);
+			trucks = new SelectionMany<Truck>(Truck.class);
+			//drivers = new SelectionMany<Driver>(Driver.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,20 +77,34 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 			new Runnable() {
 				@Override
 				public void run() {
-					addTruck();
+					trucks.select();
 				}
 			}
 		);
 		addTruckCommandableBuilder.getCommand().getFunction().setIsNotifyOnThrowableIsNull(Boolean.FALSE);
-		addTruckCommandableBuilder.addUpdatables("form:truck,form:driver,trucks");
+		//addTruckCommandableBuilder.addUpdatables("form:truck,form:driver,trucks");
+		addTruckCommandableBuilder.addUpdatables("form:truck,trucks");
 		addTruckCommandable = addTruckCommandableBuilder.execute().getOutput();
+		
+		CommandableBuilder addProductCommandableBuilder = __inject__(CommandableBuilder.class);
+		addProductCommandableBuilder.setName("Ajouter").setCommandFunctionActionClass(SystemActionCustom.class).addCommandFunctionTryRunRunnable(
+			new Runnable() {
+				@Override
+				public void run() {
+					products.select();
+				}
+			}
+		);
+		addProductCommandableBuilder.getCommand().getFunction().setIsNotifyOnThrowableIsNull(Boolean.FALSE);
+		addProductCommandableBuilder.addUpdatables("form:product,products");
+		addProductCommandable = addProductCommandableBuilder.execute().getOutput();
 		
 		CommandableBuilder addArrivalPlaceCommandableBuilder = __inject__(CommandableBuilder.class);
 		addArrivalPlaceCommandableBuilder.setName("Ajouter").setCommandFunctionActionClass(SystemActionCustom.class).addCommandFunctionTryRunRunnable(
 			new Runnable() {
 				@Override
 				public void run() {
-					addArrivalPlace();
+					arrivalPlaces.select();
 				}
 			}
 		);
@@ -103,7 +123,7 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 		);
 		createCommandable = saveCommandableBuilder.execute().getOutput();
 	}
-	
+	/*
 	public void addTruck() {
 		if(truck == null || driver == null)
 			return;
@@ -121,23 +141,12 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 		drivers.add(truck.getDriver());
 		truck.setDriver(null);
 	}
-	
-	public void addArrivalPlace() {
-		if(arrivalPlace == null)
-			return;
-		agreement.getArrivalPlaces(Boolean.TRUE).add(arrivalPlace);
-		arrivalPlaces.remove(arrivalPlace);
-	}
-	
-	public void removeArrivalPlace(Place arrivalPlace) {
-		if(arrivalPlace == null)
-			return;
-		agreement.getArrivalPlaces().remove(arrivalPlace);
-		arrivalPlaces.add(arrivalPlace);
-	}
-	
+	*/
 	public void create() {
-		//__inject__(AgreementController.class).create(agreement);
+		agreement.setProducts((List<Product>) products.getValue());
+		agreement.setTrucks((List<Truck>) trucks.getValue());
+		agreement.setArrivalPlaces((List<Place>) arrivalPlaces.getValue());
+		__inject__(AgreementController.class).create(agreement);
 	}
 	
 	protected WindowContainerManagedWindowBuilder __getWindowContainerManagedWindowBuilder__() {

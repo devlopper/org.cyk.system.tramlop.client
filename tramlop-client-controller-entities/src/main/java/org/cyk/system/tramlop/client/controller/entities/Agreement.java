@@ -71,7 +71,9 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	public Agreement addProduct(String code,Integer weightInKiloGram) {
 		if(StringHelper.isBlank(code))
 			return this;
-		getProducts(Boolean.TRUE).add(InstanceGetter.getInstance().getByBusinessIdentifier(Product.class, code).setWeightInKiloGram(weightInKiloGram));
+		Product product = InstanceGetter.getInstance().getByBusinessIdentifier(Product.class, code);
+		product.setWeightInKiloGram(weightInKiloGram);
+		getProducts(Boolean.TRUE).add(product);
 		return this;
 	}
 	
@@ -130,4 +132,10 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 		getArrivalPlaces(Boolean.TRUE).add(InstanceGetter.getInstance().getByBusinessIdentifier(Place.class, code).setDurationInMinute(durationInMinute));
 		return this;
 	}
+
+	/**/
+	
+	public static final String FIELD_PRODUCTS = "products";
+	public static final String FIELD_TRUCKS = "trucks";
+	public static final String FIELD_ARRIVAL_PLACES = "arrivalPlaces";
 }

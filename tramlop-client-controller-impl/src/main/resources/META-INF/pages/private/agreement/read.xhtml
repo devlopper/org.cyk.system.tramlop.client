@@ -8,6 +8,51 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
 	
-    <cyk:page value="#{agreementReadPage}"/>
+    <cyk:page value="#{agreementReadPage}">
+    	<ui:define name="centerCenter">.
+    		<div class="ui-g">
+    			<div class="ui-g-12">
+    				<div class="ui-g-4">
+    					<h:outputText value="Client" />
+    				</div>
+    				<div class="ui-g-8">
+    					<h:outputText value="#{agreementReadPage.agreement.customer}" />
+    				</div>
+    			</div>
+    			<div class="ui-g-12">
+    				<div class="ui-g-4">
+    					<h:outputText value="Produits" />
+    				</div>
+    				<div class="ui-g-8">
+    					<h:outputText value="#{agreementReadPage.agreement.products}" />
+    				</div>
+    			</div>
+    			<div class="ui-g-12">
+    				<div class="ui-g-4">
+    					<h:outputText value="Lieu de départ" />
+    				</div>
+    				<div class="ui-g-8">
+    					<h:outputText value="#{agreementReadPage.agreement.departurePlace}" />
+    				</div>
+    			</div>
+    			<div class="ui-g-12">
+    				<div class="ui-g-4">
+    					<h:outputText value="Lieu d'arrivée" />
+    				</div>
+    				<div class="ui-g-8">
+    					<h:outputText value="#{agreementReadPage.agreement.arrivalPlaces}" />
+    				</div>
+    			</div>
+    			<div class="ui-g-12">
+    				<div class="ui-g-4">
+    					<h:outputText value="Camions" />
+    				</div>
+    				<div class="ui-g-8">
+    					<h:outputText value="#{agreementReadPage.agreement.trucks}" />
+    				</div>
+    			</div>
+    		</div>
+    	</ui:define>
+    </cyk:page>
     
 </html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
+	
+    <cyk:page value="#{deliveryWeighPage}">
+    	<ui:define name="centerCenter">.
+    		<div class="ui-g">
+    			<div class="ui-g-2"><p:outputLabel for="truck" value="Camion" /></div>
+    			<div class="ui-g-6">
+    				<p:selectOneMenu id="truck" value="#{deliveryWeighPage.truck}" converter="#{objectConverter}" required="true">
+   						<f:selectItem itemLabel="Veuillez sélectionner un camion" />
+	    				<f:selectItems value="#{deliveryWeighPage.trucks}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
+	    			</p:selectOneMenu>
+    			</div>
+    			<div class="ui-g-4"><p:message for="truck" /></div>
+    			
+    			<div class="ui-g-2"><h:outputText value="Poids à vide en kilogramme" /></div>
+    			<div class="ui-g-10">
+    				Affichage du poids à vide
+    			</div>
+    			
+    			<div class="ui-g-2"><h:outputText value="Produit" /></div>
+    			<div class="ui-g-10">
+    				Affichage du produit chargé
+    			</div>
+    			
+    			<div class="ui-g-2"><p:outputLabel for="weight" value="Poids en kilogramme" /></div>
+    			<div class="ui-g-6">
+    				<p:inputNumber id="weight" required="true" />
+    			</div>
+    			<div class="ui-g-4"><p:message for="weight" /></div>
+    		</div>
+    		<p:separator/>
+    		<cyk:commandable value="#{deliveryWeighPage.saveCommandable}" />
+    	</ui:define>
+    </cyk:page>
+    
+</html>

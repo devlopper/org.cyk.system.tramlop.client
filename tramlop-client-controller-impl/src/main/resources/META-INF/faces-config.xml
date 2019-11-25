@@ -30,23 +30,23 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>deliveryWeighBeforeChargeView</from-outcome>
-			<to-view-id>/private/delivery/weighbeforecharge.jsf</to-view-id>
+			<from-outcome>deliveryWeighBeforeLoadView</from-outcome>
+			<to-view-id>/private/delivery/task/weighbeforeload.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>deliveryLoadView</from-outcome>
-			<to-view-id>/private/delivery/load.jsf</to-view-id>
+			<to-view-id>/private/delivery/task/load.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>deliveryWeighView</from-outcome>
-			<to-view-id>/private/delivery/weigh.jsf</to-view-id>
+			<to-view-id>/private/delivery/task/weigh.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>deliveryReceiveView</from-outcome>
-			<to-view-id>/private/delivery/receive.jsf</to-view-id>
+			<to-view-id>/private/delivery/task/receive.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>

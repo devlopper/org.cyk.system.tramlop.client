@@ -37,10 +37,7 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 
 	private Agreement agreement;
 	private Collection<Customer> customers;
-	//private Collection<Truck> trucks;
-	//private Truck truck;
 	private Collection<Driver> drivers;
-	//private Driver driver;
 	private Collection<Place> departurePlaces;
 	private Place departurePlace;
 	private Integer productWeightInKiloGram;
@@ -48,7 +45,6 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 	private SelectionMany<Place> arrivalPlaces;
 	private SelectionMany<Product> products;
 	private SelectionMany<Truck> trucks;
-	//private SelectionMany<Driver> drivers;
 	
 	private Commandable addTruckCommandable;
 	private Commandable addArrivalPlaceCommandable;
@@ -124,25 +120,7 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 		);
 		createCommandable = saveCommandableBuilder.execute().getOutput();
 	}
-	/*
-	public void addTruck() {
-		if(truck == null || driver == null)
-			return;
-		truck.setDriver(driver);
-		agreement.getTrucks(Boolean.TRUE).add(truck);
-		trucks.remove(truck);
-		drivers.remove(driver);
-	}
 	
-	public void removeTruck(Truck truck) {
-		if(truck == null)
-			return;
-		agreement.getTrucks().remove(truck);
-		trucks.add(truck);
-		drivers.add(truck.getDriver());
-		truck.setDriver(null);
-	}
-	*/
 	public void create() {
 		agreement.setProducts((List<Product>) products.getValue());
 		agreement.setTrucks((List<Truck>) trucks.getValue());

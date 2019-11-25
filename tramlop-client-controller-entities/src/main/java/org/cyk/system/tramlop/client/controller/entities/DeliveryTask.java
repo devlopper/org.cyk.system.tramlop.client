@@ -12,4 +12,10 @@ import lombok.experimental.Accessors;
 public class DeliveryTask extends AbstractDataIdentifiableSystemStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private Task task;
+	private Delivery delivery;
+	private Integer weightInKiloGram;
+	private Product product;
+	private Place unloadingPlace;
+	private Driver driver;
 }

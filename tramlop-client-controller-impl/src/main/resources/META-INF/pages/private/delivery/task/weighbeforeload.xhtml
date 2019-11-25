@@ -8,37 +8,26 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
 	
-    <cyk:page value="#{deliveryWeighPage}">
+    <cyk:page value="#{deliveryWeighBeforeLoadPage}">
     	<ui:define name="centerCenter">.
     		<div class="ui-g">
     			<div class="ui-g-2"><p:outputLabel for="truck" value="Camion" /></div>
     			<div class="ui-g-6">
-    				<pre>Liste des camions au stade de pesée avec chargement</pre>
-    				<p:selectOneMenu id="truck" value="#{deliveryWeighPage.truck}" converter="#{objectConverter}" required="true">
-   						<f:selectItem itemLabel="Veuillez sélectionner un camion" />
-	    				<f:selectItems value="#{deliveryWeighPage.trucks}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
+    				<p:selectOneMenu id="truck" value="#{deliveryWeighBeforeLoadPage.truck.value}" converter="#{objectConverter}" required="true" filter="true">
+   						<f:selectItem itemLabel="#{deliveryWeighBeforeLoadPage.truck.message}" />
+	    				<f:selectItems value="#{deliveryWeighBeforeLoadPage.truck.choices}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
 	    			</p:selectOneMenu>
     			</div>
     			<div class="ui-g-4"><p:message for="truck" /></div>
-    			
-    			<div class="ui-g-2"><h:outputText value="Poids à vide en kilogramme" /></div>
-    			<div class="ui-g-10">
-    				Affichage du poids à vide
-    			</div>
-    			
-    			<div class="ui-g-2"><h:outputText value="Produit" /></div>
-    			<div class="ui-g-10">
-    				Affichage du produit chargé
-    			</div>
-    			
+    			   			
     			<div class="ui-g-2"><p:outputLabel for="weight" value="Poids en kilogramme" /></div>
     			<div class="ui-g-6">
-    				<p:inputNumber id="weight" required="true" />
+    				<p:inputNumber id="weight" value="#{deliveryWeighBeforeLoadPage.delivery.weightInKiloGram}" required="true" />
     			</div>
     			<div class="ui-g-4"><p:message for="weight" /></div>
     		</div>
     		<p:separator/>
-    		<cyk:commandable value="#{deliveryWeighPage.saveCommandable}" />
+    		<cyk:commandable value="#{deliveryWeighBeforeLoadPage.saveCommandable}" />
     	</ui:define>
     </cyk:page>
     

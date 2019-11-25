@@ -7,7 +7,6 @@ import javax.inject.Named;
 
 import org.cyk.system.tramlop.client.controller.api.DeliveryController;
 import org.cyk.system.tramlop.client.controller.entities.Delivery;
-import org.cyk.system.tramlop.client.controller.entities.SelectionOneDriver;
 import org.cyk.system.tramlop.server.persistence.api.TruckPersistence;
 import org.cyk.utility.__kernel__.properties.Properties;
 
@@ -15,17 +14,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class DeliveryWeighBeforeChargePage extends AbstractDeliveryPage implements Serializable {
+public class DeliveryWeighBeforeLoadPage extends AbstractDeliveryPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	Delivery delivery = new Delivery();
-	protected SelectionOneDriver driver;
-	
-	@Override
-	protected void __listenPostConstruct__() {
-		super.__listenPostConstruct__();
-		driver = new SelectionOneDriver();
-	}
 	
 	@Override
 	protected Properties __getReadTrucksProperties__() {
@@ -35,7 +27,6 @@ public class DeliveryWeighBeforeChargePage extends AbstractDeliveryPage implemen
 	
 	public void __save__() {
 		delivery.setTruck(truck.getValue());
-		delivery.setDriver(driver.getValue());
 		__inject__(DeliveryController.class).create(delivery);
 	}
 	

@@ -21,5 +21,5 @@ public class Task extends AbstractDataIdentifiableSystemStringIdentifiableBusine
 	public static final String FIELD_EXISTENCE = "existence";
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM = "weightInKiloGram";
 	public static final String FIELD_PRODUCT = "product";
-	
+	public static final String FIELD_DELIVERIES = "deliveries";
 }

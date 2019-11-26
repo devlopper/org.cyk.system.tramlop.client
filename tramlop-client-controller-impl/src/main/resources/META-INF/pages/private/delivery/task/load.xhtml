@@ -13,10 +13,9 @@
     		<div class="ui-g">
     			<div class="ui-g-2"><p:outputLabel for="truck" value="Camion" /></div>
     			<div class="ui-g-6">
-    				<pre>Liste des camions au stade de chargement</pre>
-    				<p:selectOneMenu id="truck" value="#{deliveryLoadPage.truck}" converter="#{objectConverter}" required="true">
-   						<f:selectItem itemLabel="Veuillez sélectionner un camion" />
-	    				<f:selectItems value="#{deliveryLoadPage.trucks}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
+    				<p:selectOneMenu id="truck" value="#{deliveryLoadPage.truck.value}" converter="#{objectConverter}" required="true">
+   						<f:selectItem itemLabel="#{deliveryLoadPage.truck.message}" />
+	    				<f:selectItems value="#{deliveryLoadPage.truck.choices}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
 	    			</p:selectOneMenu>
     			</div>
     			<div class="ui-g-4"><p:message for="truck" /></div>
@@ -30,10 +29,23 @@
     			</div>
     			<div class="ui-g-4"><p:message for="driver" /></div>
     			
-    			<div class="ui-g-2"><h:outputText value="Produit" /></div>
-    			<div class="ui-g-10">
-    				Affichage du produit en fonction du camion sélectionné : A partir du camion on trouve le contrat en cours au quel il est associé afin de connaitre le produit
+    			<div class="ui-g-2"><p:outputLabel for="product" value="Produit" /></div>
+    			<div class="ui-g-6">
+    				<p:selectOneMenu id="product" value="#{deliveryLoadPage.product.value}" converter="#{objectConverter}" required="true" filter="true">
+    					<f:selectItem itemLabel="#{deliveryLoadPage.product.message}" />
+	    				<f:selectItems value="#{deliveryLoadPage.product.choices}" var="product" itemLabel="#{product.name}" itemValue="#{product}"/>
+	    			</p:selectOneMenu>
     			</div>
+    			<div class="ui-g-4"><p:message for="product" /></div>
+    			
+    			<div class="ui-g-2"><p:outputLabel for="unloadingPlace" value="Lieu d'arrivée" /></div>
+    			<div class="ui-g-6">
+    				<p:selectOneMenu id="unloadingPlace" value="#{deliveryLoadPage.unloadingPlace.value}" converter="#{objectConverter}" required="true" filter="true">
+    					<f:selectItem itemLabel="#{deliveryLoadPage.unloadingPlace.message}" />
+	    				<f:selectItems value="#{deliveryLoadPage.unloadingPlace.choices}" var="unloadingPlace" itemLabel="#{unloadingPlace.name}" itemValue="#{unloadingPlace}"/>
+	    			</p:selectOneMenu>
+    			</div>
+    			<div class="ui-g-4"><p:message for="unloadingPlace" /></div>
     			
     		</div>
     		<p:separator/>

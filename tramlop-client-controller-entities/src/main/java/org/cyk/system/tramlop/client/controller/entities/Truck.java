@@ -23,4 +23,6 @@ public class Truck extends AbstractDataIdentifiableSystemStringIdentifiableBusin
 			this.driver = InstanceGetter.getInstance().getByBusinessIdentifier(Driver.class, code);
 		return this;
 	}
+	
+	public static final String FIELD_TASKS = "tasks";
 }

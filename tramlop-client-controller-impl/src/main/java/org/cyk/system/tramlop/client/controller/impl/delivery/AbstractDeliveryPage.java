@@ -3,6 +3,8 @@ package org.cyk.system.tramlop.client.controller.impl.delivery;
 import java.io.Serializable;
 
 import org.cyk.system.tramlop.client.controller.entities.SelectionOneTruck;
+import org.cyk.system.tramlop.client.controller.entities.Truck;
+import org.cyk.utility.__kernel__.instance.SelectionOne;
 import org.cyk.utility.__kernel__.properties.Properties;
 import org.cyk.utility.__kernel__.system.action.SystemActionCustom;
 import org.cyk.utility.client.controller.component.command.Commandable;
@@ -17,7 +19,7 @@ public abstract class AbstractDeliveryPage extends AbstractPageContainerManagedI
 	private static final long serialVersionUID = 1L;
 
 	protected Commandable saveCommandable;
-	protected SelectionOneTruck truck;
+	protected SelectionOne<Truck> truck;
 	
 	@Override
 	protected void __listenPostConstruct__() {
@@ -39,7 +41,7 @@ public abstract class AbstractDeliveryPage extends AbstractPageContainerManagedI
 		saveCommandable = saveCommandableBuilder.execute().getOutput();
 	}
 	
-	protected SelectionOneTruck __getTrucks__() {
+	protected SelectionOne<Truck> __getTrucks__() {
 		return new SelectionOneTruck(__getReadTrucksProperties__());
 	}
 	

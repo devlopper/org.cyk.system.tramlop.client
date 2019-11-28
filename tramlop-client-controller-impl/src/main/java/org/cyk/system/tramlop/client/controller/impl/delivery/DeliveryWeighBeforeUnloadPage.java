@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class DeliveryReceivePage extends AbstractDeliveryPage implements Serializable {
+public class DeliveryWeighBeforeUnloadPage extends AbstractDeliveryPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Override

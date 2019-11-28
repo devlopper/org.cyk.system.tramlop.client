@@ -25,7 +25,7 @@
 	
 	<ui:fragment rendered="#{showDriver}">
 		<div class="ui-g-2"><h:outputText value="Conducteur" /></div>
-		<div class="ui-g-10"><h:outputText id="driverOutput" value="#{delivery.driver}" /></div>
+		<div class="ui-g-10"><h:outputText id="driverOutput" value="#{delivery.driver.person.firstName} #{delivery.driver.person.lastNames}" /></div>
 	</ui:fragment>
 	
 	<ui:fragment rendered="#{showWeightAfterLoad}">
@@ -35,12 +35,12 @@
 	
 	<ui:fragment rendered="#{showWeightBeforeUnload}">
 		<div class="ui-g-2"><h:outputText value="Poids avant déchargement" /></div>
-		<div class="ui-g-10"><h:outputText id="weightBeforeUnloadOutput" value="#{delivery.getTaskAt(4).weightInKiloGram}" /></div>
+		<div class="ui-g-10"><h:outputText id="weightBeforeUnloadOutput" value="#{delivery.getTaskAt(3).weightInKiloGram}" /></div>
 	</ui:fragment>
 	
 	<ui:fragment rendered="#{showWeightAfterUnload}">
 		<div class="ui-g-2"><h:outputText value="Poids à vide après déchargement" /></div>
-		<div class="ui-g-10"><h:outputText id="weightAfterUnloadOutput" value="#{delivery.getTaskAt(7).weightInKiloGram}" /></div>
+		<div class="ui-g-10"><h:outputText id="weightAfterUnloadOutput" value="#{delivery.getTaskAt(4).weightInKiloGram}" /></div>
 	</ui:fragment>
 			  		
 </ui:composition>

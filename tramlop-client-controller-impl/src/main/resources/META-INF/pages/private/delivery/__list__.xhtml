@@ -31,10 +31,10 @@
   			<h:outputText value="#{delivery.getTaskAt(2).weightInKiloGram}" />
   		</p:column>
   		<p:column headerText="Poids avant déchargement">
-  			<h:outputText value="#{delivery.getTaskAt(5).weightInKiloGram}" />
+  			<h:outputText value="#{delivery.getTaskAt(3).weightInKiloGram}" />
   		</p:column>
   		<p:column headerText="Poids à vide après déchargement">
-  			<h:outputText value="#{delivery.getTaskAt(7).weightInKiloGram}" />
+  			<h:outputText value="#{delivery.getTaskAt(4).weightInKiloGram}" />
   		</p:column>
   		<p:column headerText="Actions">
   			<p:commandButton value="Détails" icon="fa fa-eye" action="#{deliveriesController.showDialog(delivery)}"/>

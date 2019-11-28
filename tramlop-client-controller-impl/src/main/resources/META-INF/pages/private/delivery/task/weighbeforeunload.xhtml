@@ -8,10 +8,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
 	
-    <cyk:page value="#{deliveryReceivePage}">
+    <cyk:page value="#{deliveryWeighBeforeUnloadPage}">
     	<ui:define name="centerCenter">.
     		<ui:decorate template="__weigh__.xhtml">
-    			<ui:param name="controller" value="#{deliveryReceivePage}"/>
+    			<ui:param name="controller" value="#{deliveryWeighBeforeUnloadPage}"/>
     			<ui:param name="inputTruckAjaxDisabled" value="false"/>
   				<ui:param name="showWeightBeforeLoad" value="true"/>
   				<ui:param name="showProduct" value="true"/>

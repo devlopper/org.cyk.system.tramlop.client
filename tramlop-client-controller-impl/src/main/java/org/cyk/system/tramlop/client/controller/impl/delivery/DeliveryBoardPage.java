@@ -26,7 +26,8 @@ public class DeliveryBoardPage extends AbstractPageContainerManagedImpl implemen
 	protected void __listenPostConstruct__() {
 		super.__listenPostConstruct__();
 		runningDeliveries = __inject__(DeliveryController.class).read(new Properties().setFields(Delivery.FIELD_TASKS+","+Delivery.FIELD_TASKS+"."+Task.FIELD_EXISTENCE
-				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_WEIGHT_IN_KILO_GRAM+","+Delivery.FIELD_TASKS+"."+Task.FIELD_PRODUCT));
+				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_WEIGHT_IN_KILO_GRAM+","+Delivery.FIELD_TASKS+"."+Task.FIELD_PRODUCT
+				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_UNLOADING_PLACE));
 		closedDeliveries = __inject__(DeliveryController.class).read();
 	}
 	

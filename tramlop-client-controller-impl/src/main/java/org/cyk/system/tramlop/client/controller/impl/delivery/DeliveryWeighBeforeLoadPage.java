@@ -6,8 +6,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import org.cyk.system.tramlop.client.controller.api.DeliveryController;
-import org.cyk.system.tramlop.client.controller.entities.Delivery;
 import org.cyk.system.tramlop.server.persistence.api.TruckPersistence;
+import org.cyk.system.tramlop.server.persistence.entities.Task;
 import org.cyk.utility.__kernel__.properties.Properties;
 
 import lombok.Getter;
@@ -17,7 +17,10 @@ import lombok.Setter;
 public class DeliveryWeighBeforeLoadPage extends AbstractDeliveryPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	Delivery delivery = new Delivery();
+	@Override
+	protected String __getTaskCode__() {
+		return Task.CODE_PESE_VIDE_AVANT_CHARGE;
+	}
 	
 	@Override
 	protected Properties __getReadTrucksProperties__() {
@@ -28,11 +31,6 @@ public class DeliveryWeighBeforeLoadPage extends AbstractDeliveryPage implements
 	public void __save__() {
 		delivery.setTruck(truck.getValue());
 		__inject__(DeliveryController.class).create(delivery);
-	}
-	
-	@Override
-	protected String __getWindowTitleValue__() {
-		return "Pesée de camion vide avant chargement";
 	}
 	
 }

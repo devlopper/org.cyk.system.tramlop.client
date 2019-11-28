@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
+
+	<div class="ui-g">
+  		<div class="ui-g-2"><p:outputLabel for="truck" value="Camion" /></div>
+  		<div class="ui-g-6">
+  			<ui:decorate template="__inputTruck__.xhtml">
+  				<ui:param name="selection" value="#{controller.truck}"/>
+  				<ui:param name="ajaxDisabled" value="#{inputTruckAjaxDisabled}"/>
+  				<ui:param name="update" value="#{inputTruckUpdate}"/>
+  			</ui:decorate>
+  		</div>
+  		<div class="ui-g-4"><p:message for="truck" /></div>
+  		
+  		<ui:insert name="afterTruckBeforeWeight" />
+  			   			
+  		<div class="ui-g-2"><p:outputLabel for="weight" value="Poids en kilogramme" /></div>
+  		<div class="ui-g-6">
+  			<p:inputNumber id="weight" value="#{controller.delivery.weightInKiloGram}" required="true" />
+  		</div>
+  		<div class="ui-g-4"><p:message for="weight" /></div>
+  	</div>
+  	<p:separator/>
+  	<cyk:commandable value="#{controller.saveCommandable}" />
+
+</ui:composition>

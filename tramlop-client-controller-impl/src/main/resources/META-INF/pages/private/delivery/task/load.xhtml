@@ -13,10 +13,11 @@
     		<div class="ui-g">
     			<div class="ui-g-2"><p:outputLabel for="truck" value="Camion" /></div>
     			<div class="ui-g-6">
-    				<p:selectOneMenu id="truck" value="#{deliveryLoadPage.truck.value}" converter="#{objectConverter}" required="true">
-   						<f:selectItem itemLabel="#{deliveryLoadPage.truck.message}" />
-	    				<f:selectItems value="#{deliveryLoadPage.truck.choices}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
-	    			</p:selectOneMenu>
+    				<ui:decorate template="__inputTruck__.xhtml">
+    					<ui:param name="selection" value="#{deliveryLoadPage.truck}"/>
+  						<ui:param name="ajaxDisabled" value="false"/>
+  						<ui:param name="update" value="driver,product,unloadingPlace"/>
+  					</ui:decorate>
     			</div>
     			<div class="ui-g-4"><p:message for="truck" /></div>
     			

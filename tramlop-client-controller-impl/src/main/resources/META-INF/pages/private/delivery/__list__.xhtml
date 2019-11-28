@@ -21,6 +21,12 @@
   		<p:column headerText="Chargement">
   			<h:outputText value="#{delivery.getTaskAt(1).product}" />
   		</p:column>
+  		<p:column headerText="Conducteur">
+  			<h:outputText value="#{delivery.driver.person.firstName} #{delivery.driver.person.lastNames}" />
+  		</p:column>
+  		<p:column headerText="Destination">
+  			<h:outputText value="#{delivery.getTaskAt(1).unloadingPlace}" />
+  		</p:column>
   		<p:column headerText="Poids après chargement">
   			<h:outputText value="#{delivery.getTaskAt(2).weightInKiloGram}" />
   		</p:column>

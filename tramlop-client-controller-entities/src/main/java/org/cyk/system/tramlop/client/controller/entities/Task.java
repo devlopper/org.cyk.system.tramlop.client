@@ -15,11 +15,15 @@ public class Task extends AbstractDataIdentifiableSystemStringIdentifiableBusine
 	private Weighing weighing;
 	private Integer weightInKiloGram;
 	private Product product;
+	private Driver driver;
 	private Place unloadingPlace;
 	private Existence existence;
+	private Integer orderNumber;
 	
 	public static final String FIELD_EXISTENCE = "existence";
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM = "weightInKiloGram";
 	public static final String FIELD_PRODUCT = "product";
+	public static final String FIELD_DRIVER = "driver";
+	public static final String FIELD_UNLOADING_PLACE = "unloadingPlace";
 	public static final String FIELD_DELIVERIES = "deliveries";
 }

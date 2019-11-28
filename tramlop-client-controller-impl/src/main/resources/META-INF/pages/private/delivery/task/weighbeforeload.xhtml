@@ -10,24 +10,10 @@
 	
     <cyk:page value="#{deliveryWeighBeforeLoadPage}">
     	<ui:define name="centerCenter">.
-    		<div class="ui-g">
-    			<div class="ui-g-2"><p:outputLabel for="truck" value="Camion" /></div>
-    			<div class="ui-g-6">
-    				<p:selectOneMenu id="truck" value="#{deliveryWeighBeforeLoadPage.truck.value}" converter="#{objectConverter}" required="true" filter="true">
-   						<f:selectItem itemLabel="#{deliveryWeighBeforeLoadPage.truck.message}" />
-	    				<f:selectItems value="#{deliveryWeighBeforeLoadPage.truck.choices}" var="truck" itemLabel="#{truck.code}" itemValue="#{truck}"/>
-	    			</p:selectOneMenu>
-    			</div>
-    			<div class="ui-g-4"><p:message for="truck" /></div>
-    			   			
-    			<div class="ui-g-2"><p:outputLabel for="weight" value="Poids en kilogramme" /></div>
-    			<div class="ui-g-6">
-    				<p:inputNumber id="weight" value="#{deliveryWeighBeforeLoadPage.delivery.weightInKiloGram}" required="true" />
-    			</div>
-    			<div class="ui-g-4"><p:message for="weight" /></div>
-    		</div>
-    		<p:separator/>
-    		<cyk:commandable value="#{deliveryWeighBeforeLoadPage.saveCommandable}" />
+    		<ui:decorate template="__weigh__.xhtml">
+    			<ui:param name="controller" value="#{deliveryWeighBeforeLoadPage}"/>
+    			<ui:param name="inputTruckAjaxDisabled" value="true"/>
+    		</ui:decorate>
     	</ui:define>
     </cyk:page>
     

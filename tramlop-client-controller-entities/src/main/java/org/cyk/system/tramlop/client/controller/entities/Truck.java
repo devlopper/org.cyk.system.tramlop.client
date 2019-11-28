@@ -1,6 +1,7 @@
 package org.cyk.system.tramlop.client.controller.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.cyk.utility.__kernel__.instance.InstanceGetter;
 import org.cyk.utility.__kernel__.string.StringHelper;
@@ -15,7 +16,8 @@ public class Truck extends AbstractDataIdentifiableSystemStringIdentifiableBusin
 	private static final long serialVersionUID = 1L;
 	
 	private Driver driver;
-
+	private List<Driver> drivers;
+	
 	public Truck setDriverFromCode(String code) {
 		if(StringHelper.isBlank(code))
 			this.driver = null;
@@ -25,4 +27,6 @@ public class Truck extends AbstractDataIdentifiableSystemStringIdentifiableBusin
 	}
 	
 	public static final String FIELD_TASKS = "tasks";
+	public static final String FIELD_DRIVER = "driver";
+	public static final String FIELD_DRIVERS = "drivers";
 }

@@ -24,6 +24,7 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	private List<Product> products;
 	private List<Truck> trucks;
 	private List<Place> arrivalPlaces;
+	private List<Driver> drivers;
 	
 	public Agreement(String code,String customerCode,String departurePlaceCode) {
 		setCode(code);
@@ -138,4 +139,5 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	public static final String FIELD_PRODUCTS = "products";
 	public static final String FIELD_TRUCKS = "trucks";
 	public static final String FIELD_ARRIVAL_PLACES = "arrivalPlaces";
+	public static final String FIELD_DRIVERS = "drivers";
 }

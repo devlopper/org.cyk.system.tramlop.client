@@ -26,6 +26,7 @@ public class Delivery extends AbstractDataIdentifiableSystemStringIdentifiableBu
 	private Place arrivalPlace;
 	private Boolean closed;
 	private ArrayList<Task> tasks;
+	private ArrayList<Truck> trucks;
 	
 	public Delivery(String code,String agreementCode,String truckCode,String driverCode,Boolean closed) {
 		setCode(code);
@@ -75,7 +76,9 @@ public class Delivery extends AbstractDataIdentifiableSystemStringIdentifiableBu
 	}
 	
 	public static final String FIELD_TRUCK = "truck";
+	public static final String FIELD_TRUCKS = "trucks";
 	public static final String FIELD_DRIVER = "driver";
 	public static final String FIELD_TASKS = "tasks";
+	public static final String FIELD_CLOSED = "closed";
 
 }

@@ -40,13 +40,18 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>deliveryWeighView</from-outcome>
-			<to-view-id>/private/delivery/task/weigh.jsf</to-view-id>
+			<from-outcome>deliveryWeighAfterLoadView</from-outcome>
+			<to-view-id>/private/delivery/task/weighafterload.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>deliveryReceiveView</from-outcome>
 			<to-view-id>/private/delivery/task/receive.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>deliveryWeighAfterUnloadView</from-outcome>
+			<to-view-id>/private/delivery/task/weighafterunload.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>

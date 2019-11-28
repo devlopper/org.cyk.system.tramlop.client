@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.cyk.system.tramlop.client.controller.api.DeliveryTaskController;
 import org.cyk.system.tramlop.server.persistence.entities.Task;
 
 import lombok.Getter;
@@ -16,7 +17,11 @@ public class DeliveryReceivePage extends AbstractDeliveryPage implements Seriali
 
 	@Override
 	protected String __getTaskCode__() {
-		return Task.CODE_ARRIVEE;
+		return Task.CODE_WEIGH_BEFORE_UNLOAD;
 	}
-	
+
+	public void __save__() {
+		deliveryTask.setWeightInKiloGram(delivery.getWeightInKiloGram());
+		__inject__(DeliveryTaskController.class).create(deliveryTask);
+	}
 }

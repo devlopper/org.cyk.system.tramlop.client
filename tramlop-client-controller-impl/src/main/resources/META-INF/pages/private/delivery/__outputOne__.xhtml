@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
+	
+	<ui:fragment rendered="#{showWeightBeforeLoad == null ? delivery.getTaskAt(0)!=null : showWeightBeforeLoad}">
+		<div class="ui-g-2"><h:outputText value="Poids à vide" /></div>
+		<div class="ui-g-10"><h:outputText id="weightBeforeLoadOutput" value="#{delivery.getTaskAt(0).weightInKiloGram}" /></div>
+	</ui:fragment>
+	
+	<ui:fragment rendered="#{showProduct}">
+		<div class="ui-g-2"><h:outputText value="Produit" /></div>
+		<div class="ui-g-10"><h:outputText id="productOutput" value="#{delivery.getTaskAt(1).product}" /></div>
+	</ui:fragment>
+	
+	<ui:fragment rendered="#{showUnloadingPlace}">
+		<div class="ui-g-2"><h:outputText value="Destination" /></div>
+		<div class="ui-g-10"><h:outputText id="unloadingPlaceOutput" value="#{delivery.getTaskAt(1).unloadingPlace}" /></div>
+	</ui:fragment>
+	
+	<ui:fragment rendered="#{showDriver}">
+		<div class="ui-g-2"><h:outputText value="Conducteur" /></div>
+		<div class="ui-g-10"><h:outputText id="driverOutput" value="#{delivery.driver}" /></div>
+	</ui:fragment>
+	
+	<ui:fragment rendered="#{showWeightAfterLoad}">
+		<div class="ui-g-2"><h:outputText value="Poids" /></div>
+		<div class="ui-g-10"><h:outputText id="weightAfterLoadOutput" value="#{delivery.getTaskAt(2).weightInKiloGram}" /></div>
+	</ui:fragment>
+	
+	<ui:fragment rendered="#{showWeightBeforeUnload}">
+		<div class="ui-g-2"><h:outputText value="Poids avant déchargement" /></div>
+		<div class="ui-g-10"><h:outputText id="weightBeforeUnloadOutput" value="#{delivery.getTaskAt(4).weightInKiloGram}" /></div>
+	</ui:fragment>
+	
+	<ui:fragment rendered="#{showWeightAfterUnload}">
+		<div class="ui-g-2"><h:outputText value="Poids à vide après déchargement" /></div>
+		<div class="ui-g-10"><h:outputText id="weightAfterUnloadOutput" value="#{delivery.getTaskAt(7).weightInKiloGram}" /></div>
+	</ui:fragment>
+			  		
+</ui:composition>

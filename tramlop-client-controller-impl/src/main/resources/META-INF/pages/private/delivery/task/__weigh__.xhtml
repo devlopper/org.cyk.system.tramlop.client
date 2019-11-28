@@ -14,13 +14,21 @@
   			<ui:decorate template="__inputTruck__.xhtml">
   				<ui:param name="selection" value="#{controller.truck}"/>
   				<ui:param name="ajaxDisabled" value="#{inputTruckAjaxDisabled}"/>
-  				<ui:param name="update" value="#{inputTruckUpdate}"/>
+  				<ui:param name="update" value="details"/>
   			</ui:decorate>
   		</div>
   		<div class="ui-g-4"><p:message for="truck" /></div>
-  		
-  		<ui:insert name="afterTruckBeforeWeight" />
-  			   			
+  	</div>	
+  	
+  	<ui:insert name="afterTruckBeforeWeight" >
+  		<p:outputPanel id="details" class="ui-g">    					
+	    	<ui:decorate template="/private/delivery/__outputOne__.xhtml">
+		    	<ui:param name="delivery" value="#{controller.delivery}"/>
+		    </ui:decorate>	    		
+    	</p:outputPanel>
+  	</ui:insert>
+  	
+  	<div class="ui-g">		   			
   		<div class="ui-g-2"><p:outputLabel for="weight" value="Poids en kilogramme" /></div>
   		<div class="ui-g-6">
   			<p:inputNumber id="weight" value="#{controller.delivery.weightInKiloGram}" required="true" />

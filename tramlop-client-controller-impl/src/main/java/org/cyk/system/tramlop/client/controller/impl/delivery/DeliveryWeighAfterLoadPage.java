@@ -17,7 +17,7 @@ public class DeliveryWeighAfterLoadPage extends AbstractDeliveryPage implements 
 
 	@Override
 	protected String __getTaskCode__() {
-		return Task.CODE_PESE_CHARGE;
+		return Task.CODE_WEIGH_AFTER_LOAD;
 	}
 	
 	public void __save__() {

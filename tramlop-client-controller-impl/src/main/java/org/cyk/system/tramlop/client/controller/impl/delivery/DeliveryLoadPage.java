@@ -31,7 +31,7 @@ public class DeliveryLoadPage extends AbstractDeliveryPage implements Serializab
 	
 	@Override
 	protected String __getTaskCode__() {
-		return Task.CODE_CHARGE;
+		return Task.CODE_LOAD;
 	}
 	
 	@Override
@@ -61,7 +61,7 @@ public class DeliveryLoadPage extends AbstractDeliveryPage implements Serializab
 	@Override
 	protected Properties __getReadTrucksProperties__() {
 		return super.__getReadTrucksProperties__()
-				.setFilters(new FilterDto().addField(Truck.FIELD_TASKS, CollectionHelper.listOf(Task.CODE_PESE_VIDE_AVANT_CHARGE)))
+				.setFilters(new FilterDto().addField(Truck.FIELD_TASKS, CollectionHelper.listOf(Task.CODE_WEIGH_BEFORE_LOAD)))
 				.setFields(Truck.FIELD_DRIVER+","+Truck.FIELD_DRIVERS);
 	}
 	

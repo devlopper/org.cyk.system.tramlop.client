@@ -45,8 +45,8 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>deliveryReceiveView</from-outcome>
-			<to-view-id>/private/delivery/task/receive.jsf</to-view-id>
+			<from-outcome>deliveryWeighBeforeUnloadView</from-outcome>
+			<to-view-id>/private/delivery/task/weighbeforeunload.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>

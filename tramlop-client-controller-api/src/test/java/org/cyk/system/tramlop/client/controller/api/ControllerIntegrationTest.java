@@ -1,14 +1,11 @@
 package org.cyk.system.tramlop.client.controller.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_ARRIVEE;
-import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_CHARGE;
-import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_DECHARGE;
-import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_DEPART;
-import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_PESE_CHARGE;
-import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_PESE_DECHARGE;
-import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_PESE_VIDE_APRES_DECHARGE;
-import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_PESE_VIDE_AVANT_CHARGE;
+import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_LOAD;
+import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_WEIGH_AFTER_LOAD;
+import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_WEIGH_AFTER_UNLOAD;
+import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_WEIGH_BEFORE_LOAD;
+import static org.cyk.system.tramlop.server.persistence.entities.Task.CODE_WEIGH_BEFORE_UNLOAD;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -66,7 +63,7 @@ public class ControllerIntegrationTest extends AbstractControllerArquillianInteg
 				.setFilters(new FilterDto().addField(Task.FIELD_DELIVERIES, CollectionHelper.listOf(deliveryCode)))
 				.setIsQueryResultPaginated(Boolean.FALSE));
 		assertThat(tasks).isNotEmpty();
-		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_PESE_VIDE_AVANT_CHARGE);
+		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_WEIGH_BEFORE_LOAD);
 	}
 	
 	@Test
@@ -74,12 +71,12 @@ public class ControllerIntegrationTest extends AbstractControllerArquillianInteg
 		__inject__(AgreementController.class).create(new Agreement("a100","c01","p01").addProduct("p01", 1000).addArrivalPlace("p01", 30).addTruck("t11", "d1"));
 		String deliveryCode = __getRandomCode__();
 		__inject__(DeliveryController.class).create(new Delivery(deliveryCode, null,"t11", null).withWeightInKiloGram(15248));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_CHARGE).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));		
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_LOAD).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));		
 		Collection<Task> tasks = __inject__(TaskController.class).read(new Properties()
 				.setFilters(new FilterDto().addField(Task.FIELD_DELIVERIES, CollectionHelper.listOf(deliveryCode)))
 				.setIsQueryResultPaginated(Boolean.FALSE));
 		assertThat(tasks).isNotEmpty();
-		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_PESE_VIDE_AVANT_CHARGE,CODE_CHARGE);
+		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_WEIGH_BEFORE_LOAD,CODE_LOAD);
 	}
 	
 	@Test
@@ -87,13 +84,13 @@ public class ControllerIntegrationTest extends AbstractControllerArquillianInteg
 		__inject__(AgreementController.class).create(new Agreement("a100","c01","p01").addProduct("p01", 1000).addArrivalPlace("p01", 30).addTruck("t11", "d1"));
 		String deliveryCode = __getRandomCode__();
 		__inject__(DeliveryController.class).create(new Delivery(deliveryCode, null,"t11", null).withWeightInKiloGram(15248));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_CHARGE).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_PESE_CHARGE).setWeightInKiloGram(150));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_LOAD).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_AFTER_LOAD).setWeightInKiloGram(150));
 		Collection<Task> tasks = __inject__(TaskController.class).read(new Properties()
 				.setFilters(new FilterDto().addField(Task.FIELD_DELIVERIES, CollectionHelper.listOf(deliveryCode)))
 				.setIsQueryResultPaginated(Boolean.FALSE));
 		assertThat(tasks).isNotEmpty();
-		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_PESE_VIDE_AVANT_CHARGE,CODE_CHARGE,CODE_PESE_CHARGE,CODE_DEPART);
+		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_WEIGH_BEFORE_LOAD,CODE_LOAD,CODE_WEIGH_AFTER_LOAD);
 	}
 	
 	@Test
@@ -101,15 +98,15 @@ public class ControllerIntegrationTest extends AbstractControllerArquillianInteg
 		__inject__(AgreementController.class).create(new Agreement("a100","c01","p01").addProduct("p01", 1000).addArrivalPlace("p01", 30).addTruck("t11", "d1"));
 		String deliveryCode = __getRandomCode__();
 		__inject__(DeliveryController.class).create(new Delivery(deliveryCode, null,"t11", null).withWeightInKiloGram(15248));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_CHARGE).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_PESE_CHARGE).setWeightInKiloGram(150));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_ARRIVEE).setWeightInKiloGram(140));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_LOAD).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_AFTER_LOAD).setWeightInKiloGram(150));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_BEFORE_UNLOAD).setWeightInKiloGram(140));
 		Collection<Task> tasks = __inject__(TaskController.class).read(new Properties()
 				.setFilters(new FilterDto().addField(Task.FIELD_DELIVERIES, CollectionHelper.listOf(deliveryCode)))
 				.setIsQueryResultPaginated(Boolean.FALSE));
 		assertThat(tasks).isNotEmpty();
-		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_PESE_VIDE_AVANT_CHARGE,CODE_CHARGE
-				,CODE_PESE_CHARGE,CODE_DEPART,CODE_ARRIVEE,CODE_PESE_DECHARGE,CODE_DECHARGE);
+		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_WEIGH_BEFORE_LOAD,CODE_LOAD
+				,CODE_WEIGH_AFTER_LOAD,CODE_WEIGH_BEFORE_UNLOAD);
 	}
 	
 	@Test
@@ -117,16 +114,16 @@ public class ControllerIntegrationTest extends AbstractControllerArquillianInteg
 		__inject__(AgreementController.class).create(new Agreement("a100","c01","p01").addProduct("p01", 1000).addArrivalPlace("p01", 30).addTruck("t11", "d1"));
 		String deliveryCode = __getRandomCode__();
 		__inject__(DeliveryController.class).create(new Delivery(deliveryCode, null,"t11", null).withWeightInKiloGram(15248));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_CHARGE).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_PESE_CHARGE).setWeightInKiloGram(150));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_ARRIVEE).setWeightInKiloGram(140));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_PESE_VIDE_APRES_DECHARGE).setWeightInKiloGram(500));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_LOAD).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_AFTER_LOAD).setWeightInKiloGram(150));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_BEFORE_UNLOAD).setWeightInKiloGram(140));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_AFTER_UNLOAD).setWeightInKiloGram(500));
 		Collection<Task> tasks = __inject__(TaskController.class).read(new Properties()
 				.setFilters(new FilterDto().addField(Task.FIELD_DELIVERIES, CollectionHelper.listOf(deliveryCode)))
 				.setIsQueryResultPaginated(Boolean.FALSE));
 		assertThat(tasks).isNotEmpty();
-		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_PESE_VIDE_AVANT_CHARGE,CODE_CHARGE
-				,CODE_PESE_CHARGE,CODE_DEPART,CODE_ARRIVEE,CODE_PESE_DECHARGE,CODE_DECHARGE,CODE_PESE_VIDE_APRES_DECHARGE);
+		assertThat(tasks.stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_WEIGH_BEFORE_LOAD,CODE_LOAD
+				,CODE_WEIGH_AFTER_LOAD,CODE_WEIGH_BEFORE_UNLOAD,CODE_WEIGH_AFTER_UNLOAD);
 	}
 	
 	@Test
@@ -134,10 +131,10 @@ public class ControllerIntegrationTest extends AbstractControllerArquillianInteg
 		__inject__(AgreementController.class).create(new Agreement("a100","c01","p01").addProduct("p01", 1000).addArrivalPlace("p01", 30).addTruck("t11", "d1"));
 		String deliveryCode = __getRandomCode__();
 		__inject__(DeliveryController.class).create(new Delivery(deliveryCode, null,"t11", null).withWeightInKiloGram(15248));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_CHARGE).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_PESE_CHARGE).setWeightInKiloGram(150));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_ARRIVEE).setWeightInKiloGram(140));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_PESE_VIDE_APRES_DECHARGE).setWeightInKiloGram(500));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_LOAD).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_AFTER_LOAD).setWeightInKiloGram(150));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_BEFORE_UNLOAD).setWeightInKiloGram(140));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_AFTER_UNLOAD).setWeightInKiloGram(500));
 		
 		Delivery delivery = __inject__(DeliveryController.class).readByBusinessIdentifier(deliveryCode);
 		assertThat(delivery).isNotNull();
@@ -145,8 +142,8 @@ public class ControllerIntegrationTest extends AbstractControllerArquillianInteg
 		delivery = __inject__(DeliveryController.class).readByBusinessIdentifier(deliveryCode,new Properties().setFields(Delivery.FIELD_TASKS));
 		assertThat(delivery).isNotNull();
 		assertThat(delivery.getTasks()).isNotEmpty();
-		assertThat(delivery.getTasks().stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_PESE_VIDE_AVANT_CHARGE,CODE_CHARGE
-				, CODE_PESE_CHARGE, CODE_DEPART, CODE_ARRIVEE, CODE_PESE_DECHARGE, CODE_DECHARGE, CODE_PESE_VIDE_APRES_DECHARGE);
+		assertThat(delivery.getTasks().stream().map(Task::getCode).collect(Collectors.toList())).containsExactlyInAnyOrder(CODE_WEIGH_BEFORE_LOAD,CODE_LOAD
+				, CODE_WEIGH_AFTER_LOAD, CODE_WEIGH_BEFORE_UNLOAD, CODE_WEIGH_AFTER_UNLOAD);
 	}
 	
 	@Test
@@ -154,10 +151,10 @@ public class ControllerIntegrationTest extends AbstractControllerArquillianInteg
 		__inject__(AgreementController.class).create(new Agreement("a100","c01","p01").addProduct("p01", 1000).addArrivalPlace("p01", 30).addTruck("t11", "d1"));
 		String deliveryCode = __getRandomCode__();
 		__inject__(DeliveryController.class).create(new Delivery(deliveryCode, null,"t11", null).withWeightInKiloGram(15248));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_CHARGE).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_PESE_CHARGE).setWeightInKiloGram(150));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_ARRIVEE).setWeightInKiloGram(140));
-		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_PESE_VIDE_APRES_DECHARGE).setWeightInKiloGram(500));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_LOAD).setProductFromCode("p01").setUnloadingPlaceFromCode("p01").setDriverFromCode("d1"));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_AFTER_LOAD).setWeightInKiloGram(150));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_BEFORE_UNLOAD).setWeightInKiloGram(140));
+		__inject__(DeliveryTaskController.class).create(new DeliveryTask().setTruckFromCode("t11").setTaskFromCode(CODE_WEIGH_AFTER_UNLOAD).setWeightInKiloGram(500));
 		
 		Collection<Delivery> deliveries = __inject__(DeliveryController.class).read(new Properties().setFields(Delivery.FIELD_TASKS+","+Delivery.FIELD_TASKS+"."+Task.FIELD_EXISTENCE
 				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_WEIGHT_IN_KILO_GRAM+","+Delivery.FIELD_TASKS+"."+Task.FIELD_PRODUCT));

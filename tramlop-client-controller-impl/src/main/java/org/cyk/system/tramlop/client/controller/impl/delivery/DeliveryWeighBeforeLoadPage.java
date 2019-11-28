@@ -19,7 +19,7 @@ public class DeliveryWeighBeforeLoadPage extends AbstractDeliveryPage implements
 
 	@Override
 	protected String __getTaskCode__() {
-		return Task.CODE_PESE_VIDE_AVANT_CHARGE;
+		return Task.CODE_WEIGH_BEFORE_LOAD;
 	}
 	
 	@Override

@@ -16,11 +16,20 @@
     				<ui:decorate template="__inputTruck__.xhtml">
     					<ui:param name="selection" value="#{deliveryLoadPage.truck}"/>
   						<ui:param name="ajaxDisabled" value="false"/>
-  						<ui:param name="update" value="driver,product,unloadingPlace"/>
+  						<ui:param name="update" value="driver,product,unloadingPlace,details"/>
   					</ui:decorate>
     			</div>
     			<div class="ui-g-4"><p:message for="truck" /></div>
+    		</div>
     			
+    		<p:outputPanel id="details" class="ui-g">    					
+	    		<ui:decorate template="/private/delivery/__outputOne__.xhtml">
+		    		<ui:param name="delivery" value="#{deliveryLoadPage.delivery}"/>
+		    		<ui:param name="showWeightBeforeLoad" value="true"/>
+		    	</ui:decorate>	    		
+    		</p:outputPanel>
+    		
+    		<div class="ui-g">	
     			<div class="ui-g-2"><p:outputLabel for="driver" value="Conducteur" /></div>
     			<div class="ui-g-6">
     				<p:selectOneMenu id="driver" value="#{deliveryLoadPage.driver.value}" converter="#{objectConverter}" required="true" filter="true">
@@ -49,6 +58,7 @@
     			<div class="ui-g-4"><p:message for="unloadingPlace" /></div>
     			
     		</div>
+    		
     		<p:separator/>
     		<cyk:commandable value="#{deliveryLoadPage.saveCommandable}" />
     	</ui:define>

@@ -59,13 +59,6 @@ public class DeliveryLoadPage extends AbstractDeliveryPage implements Serializab
 	}
 	
 	@Override
-	protected Properties __getReadTrucksProperties__() {
-		return super.__getReadTrucksProperties__()
-				.setFilters(new FilterDto().addField(Truck.FIELD_TASKS, CollectionHelper.listOf(Task.CODE_WEIGH_BEFORE_LOAD)))
-				.setFields(Truck.FIELD_DRIVER+","+Truck.FIELD_DRIVERS);
-	}
-	
-	@Override
 	protected void __processOnSelect__(Truck truck) {
 		super.__processOnSelect__(truck);		
 		if(driver.getValue() == null && CollectionHelper.getSize(driver.getChoices()) == 1) {

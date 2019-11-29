@@ -10,6 +10,7 @@ import org.cyk.system.tramlop.client.controller.entities.Delivery;
 import org.cyk.system.tramlop.client.controller.entities.DeliveryTask;
 import org.cyk.system.tramlop.client.controller.entities.Task;
 import org.cyk.system.tramlop.client.controller.entities.Truck;
+import org.cyk.system.tramlop.server.persistence.api.TruckPersistence;
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.properties.Properties;
 import org.cyk.utility.__kernel__.system.action.SystemActionCustom;
@@ -73,7 +74,11 @@ public abstract class AbstractDeliveryPage extends AbstractPageContainerManagedI
 	}
 	
 	protected Properties __getReadTrucksProperties__() {
-		return new Properties().setIsPageable(Boolean.FALSE);
+		return new Properties()
+			.setIsPageable(Boolean.FALSE)
+			.setQueryIdentifier(TruckPersistence.READ_BY_TASKS_COUNTS)
+			.setFilters(new FilterDto().addField(Truck.FIELD_TASKS_COUNTS, task.getOrderNumber()-1))
+			.setFields(Truck.FIELD_DRIVER+","+Truck.FIELD_DRIVERS);
 	}
 	
 	protected abstract String __getTaskCode__();

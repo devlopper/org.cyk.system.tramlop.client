@@ -27,6 +27,7 @@ public class Truck extends AbstractDataIdentifiableSystemStringIdentifiableBusin
 	}
 	
 	public static final String FIELD_TASKS = "tasks";
+	public static final String FIELD_TASKS_COUNTS = "tasksCounts";
 	public static final String FIELD_DRIVER = "driver";
 	public static final String FIELD_DRIVERS = "drivers";
 }

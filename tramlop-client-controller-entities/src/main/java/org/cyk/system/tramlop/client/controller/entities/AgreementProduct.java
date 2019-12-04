@@ -18,12 +18,10 @@ import lombok.experimental.Accessors;
 public class AgreementProduct extends AbstractDataIdentifiableSystemStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@NotNull
-	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Agreement agreement;
 	
-	@NotNull
-	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Product product;
 	
 }

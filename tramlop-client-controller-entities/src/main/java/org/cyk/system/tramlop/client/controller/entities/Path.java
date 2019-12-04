@@ -8,6 +8,7 @@ import org.cyk.utility.client.controller.component.annotation.Input;
 import org.cyk.utility.client.controller.component.annotation.InputChoice;
 import org.cyk.utility.client.controller.component.annotation.InputChoiceOne;
 import org.cyk.utility.client.controller.component.annotation.InputChoiceOneCombo;
+import org.cyk.utility.client.controller.component.annotation.InputNumber;
 import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl;
 
 import lombok.Getter;
@@ -20,6 +21,6 @@ public class Path extends AbstractDataIdentifiableSystemStringIdentifiableBusine
 
 	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo private Place departure;
 	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo private Place arrival;
-	private Integer durationInMinute;
+	@NotNull @Input @InputNumber private Integer durationInMinute;
 	
 }

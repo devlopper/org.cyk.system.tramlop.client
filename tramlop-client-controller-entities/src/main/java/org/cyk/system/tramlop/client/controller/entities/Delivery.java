@@ -3,9 +3,17 @@ package org.cyk.system.tramlop.client.controller.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.validation.constraints.NotNull;
+
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.instance.InstanceGetter;
 import org.cyk.utility.__kernel__.string.StringHelper;
+import org.cyk.utility.client.controller.component.annotation.Input;
+import org.cyk.utility.client.controller.component.annotation.InputBoolean;
+import org.cyk.utility.client.controller.component.annotation.InputBooleanCheckBox;
+import org.cyk.utility.client.controller.component.annotation.InputChoice;
+import org.cyk.utility.client.controller.component.annotation.InputChoiceOne;
+import org.cyk.utility.client.controller.component.annotation.InputChoiceOneCombo;
 import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl;
 
 import lombok.Getter;
@@ -18,13 +26,22 @@ import lombok.Setter;
 public class Delivery extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Agreement agreement;
+	
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Truck truck;
+	
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Driver driver;
+	
+	@NotNull @Input @InputBoolean @InputBooleanCheckBox
+	private Boolean closed;
+	
 	private Integer weightInKiloGram;
 	private Product product;
 	private Place arrivalPlace;
-	private Boolean closed;
+	
 	private ArrayList<Task> tasks;
 	private ArrayList<Truck> trucks;
 	

@@ -51,7 +51,9 @@
 		<profile>
 			<id>deployment.adminfaces</id>
 			<properties>
+				<!--
 				<cyk.variable.user.interface.theme.menu.path>/private/__adminfaces__/menu.xhtml</cyk.variable.user.interface.theme.menu.path>
+				-->
 			</properties>
 		</profile>
 		

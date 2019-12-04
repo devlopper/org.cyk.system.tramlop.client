@@ -15,13 +15,14 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class AgreementArrivalPlace extends AbstractDataIdentifiableSystemStringImpl implements Serializable {
+public class AgreementTruckSecondaryDriver extends AbstractDataIdentifiableSystemStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
+	@NotNull
+	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Agreement agreement;
 	
-	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
-	private Place place;
-	
+	@NotNull
+	@Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
+	private Truck truck;
 }

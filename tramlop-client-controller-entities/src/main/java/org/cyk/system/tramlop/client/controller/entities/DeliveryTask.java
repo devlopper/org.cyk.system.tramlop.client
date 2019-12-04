@@ -2,8 +2,14 @@ package org.cyk.system.tramlop.client.controller.entities;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import org.cyk.utility.__kernel__.instance.InstanceGetter;
 import org.cyk.utility.__kernel__.string.StringHelper;
+import org.cyk.utility.client.controller.component.annotation.Input;
+import org.cyk.utility.client.controller.component.annotation.InputChoice;
+import org.cyk.utility.client.controller.component.annotation.InputChoiceOne;
+import org.cyk.utility.client.controller.component.annotation.InputChoiceOneCombo;
 import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringImpl;
 
 import lombok.Getter;
@@ -14,8 +20,9 @@ import lombok.experimental.Accessors;
 public class DeliveryTask extends AbstractDataIdentifiableSystemStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Task task;
-	private Delivery delivery;
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo private Delivery delivery;
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo private Task task;
+	
 	private Integer weightInKiloGram;
 	private Product product;
 	private Place unloadingPlace;

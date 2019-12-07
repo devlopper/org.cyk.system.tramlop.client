@@ -31,4 +31,8 @@ public class AgreementReadPage extends AbstractPageContainerManagedImpl implemen
 						, ConstantCharacter.COMA.toString())));
 	}
 	
+	@Override
+	protected String __getWindowTitleValue__() {
+		return "Contrat N° "+agreement.getCode();
+	}
 }

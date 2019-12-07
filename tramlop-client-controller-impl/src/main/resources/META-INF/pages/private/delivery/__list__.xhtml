@@ -8,36 +8,58 @@
 	xmlns:pe="http://primefaces.org/ui/extensions">
 
 	<p:dataTable value="#{deliveries}" var="delivery">
-  		<p:column headerText="Code">
-  			<h:outputText value="#{delivery.code}" />
-  		</p:column>
-  		<p:column headerText="Camion">
-  			<h:outputText value="#{delivery.truck}" />
-  		</p:column>
-  		
-  		<p:column headerText="Poids à vide avant chargement">
-  			<h:outputText value="#{delivery.getTaskAt(0).weightInKiloGram}" />
-  		</p:column>
-  		<p:column headerText="Chargement">
-  			<h:outputText value="#{delivery.getTaskAt(1).product}" />
-  		</p:column>
-  		<p:column headerText="Conducteur">
-  			<h:outputText value="#{delivery.driver.person.firstName} #{delivery.driver.person.lastNames}" />
-  		</p:column>
-  		<p:column headerText="Destination">
-  			<h:outputText value="#{delivery.getTaskAt(1).unloadingPlace}" />
-  		</p:column>
-  		<p:column headerText="Poids après chargement">
-  			<h:outputText value="#{delivery.getTaskAt(2).weightInKiloGram}" />
-  		</p:column>
-  		<p:column headerText="Poids avant déchargement">
-  			<h:outputText value="#{delivery.getTaskAt(3).weightInKiloGram}" />
-  		</p:column>
-  		<p:column headerText="Poids à vide après déchargement">
-  			<h:outputText value="#{delivery.getTaskAt(4).weightInKiloGram}" />
-  		</p:column>
-  		<p:column headerText="Actions">
+		<p:columnGroup type="header">
+			<p:row>
+				<p:column headerText="Camion" colspan="2"/>
+				<p:column headerText="Chargement" colspan="5"/>
+				<p:column headerText="Déchargement" colspan="3"/>
+				<p:column headerText="Perte" rowspan="3"/>
+				<p:column headerText="Actions" rowspan="3"/>
+			</p:row>
+			<p:row>
+				<!-- Camion -->
+				<p:column headerText="Immatriculation" rowspan="2"/>
+				<p:column headerText="Conducteur" rowspan="2"/>
+				<!-- Loading -->
+				<p:column headerText="Produit" rowspan="2"/>
+				<p:column headerText="Destination" rowspan="2"/>
+				<p:column headerText="Poids" colspan="3"/>				
+				<!-- Unloading -->
+				<p:column headerText="Poids" colspan="3"/>
+			</p:row>
+			<p:row>
+				<p:column headerText="Avant"/>				
+				<p:column headerText="Après"/>
+				<p:column headerText="Différence"/>
+				<!-- Unloading -->
+				<p:column headerText="Avant"/>
+				<p:column headerText="Après"/>
+				<p:column headerText="Différence"/>
+			</p:row>
+		</p:columnGroup>
+		<!-- Camion -->
+  		<p:column><h:outputText value="#{delivery.truck}" /></p:column>
+  		<p:column><h:outputText value="#{delivery.driver.person.firstName} #{delivery.driver.person.lastNames}" /></p:column>
+  		<!-- Loading -->
+  		<p:column><h:outputText value="#{delivery.getTaskAt(1).product}" /></p:column>
+  		<p:column><h:outputText value="#{delivery.getTaskAt(1).unloadingPlace}" /></p:column>
+  		<p:column><h:outputText value="#{delivery.getTaskAt(0).weightInKiloGram}" /></p:column>
+  		<p:column><h:outputText value="#{delivery.getTaskAt(2).weightInKiloGram}" /></p:column>
+  		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductAfterLoad}" /></p:column>
+  		<!-- Unloading -->
+  		<p:column><h:outputText value="#{delivery.getTaskAt(3).weightInKiloGram}" /></p:column>
+  		<p:column><h:outputText value="#{delivery.getTaskAt(4).weightInKiloGram}" /></p:column>
+  		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductAfterUnload}" /></p:column>
+  		<!-- Loss -->
+  		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductLost}" /></p:column>
+  		<!-- Actions -->
+  		<p:column>
+  			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryReadView">
+  				<f:param name="entityidentifier" value="#{delivery.identifier}"/>
+  			</p:button>
+  			<!--
   			<p:commandButton value="Détails" icon="fa fa-eye" action="#{deliveriesController.showDialog(delivery)}"/>
+  			-->
   		</p:column>
   	</p:dataTable>	
 

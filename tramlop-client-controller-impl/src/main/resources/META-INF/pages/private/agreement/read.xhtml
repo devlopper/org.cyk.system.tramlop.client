@@ -52,6 +52,11 @@
     				</div>
     			</div>
     		</div>
+    		<p:separator/>
+    		<h3><h:outputText value="Cumul des poids par produit" /></h3>
+    		<ui:include src="__listCumulByProduct__.xhtml">
+    			<ui:param name="products" value="#{agreementReadPage.agreement.products}"/>
+    		</ui:include>
     	</ui:define>
     </cyk:page>
     

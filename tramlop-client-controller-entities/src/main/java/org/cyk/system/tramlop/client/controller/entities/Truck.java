@@ -17,6 +17,10 @@ public class Truck extends AbstractDataIdentifiableSystemStringIdentifiableBusin
 	
 	private Driver driver;
 	private List<Driver> drivers;
+	private Integer weightInKiloGramOfProductAfterLoad;
+	private Integer weightInKiloGramOfProductAfterUnload;
+	private Integer weightInKiloGramOfProductLost;
+	private Product product;
 	
 	public Truck setDriverFromCode(String code) {
 		if(StringHelper.isBlank(code))
@@ -30,4 +34,8 @@ public class Truck extends AbstractDataIdentifiableSystemStringIdentifiableBusin
 	public static final String FIELD_TASKS_COUNTS = "tasksCounts";
 	public static final String FIELD_DRIVER = "driver";
 	public static final String FIELD_DRIVERS = "drivers";
+	public static final String FIELD_PRODUCT = "product";
+	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_LOAD = "weightInKiloGramOfProductAfterLoad";
+	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_UNLOAD = "weightInKiloGramOfProductAfterUnload";
+	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_LOST = "weightInKiloGramOfProductLost";
 }

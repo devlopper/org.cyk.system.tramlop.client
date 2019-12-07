@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<p:dataTable value="#{trucks}" var="truck">
+		<p:columnGroup type="header">
+			<p:row>
+				<p:column headerText="Camion" rowspan="2"/>
+				<p:column headerText="Produit" rowspan="2"/>
+				<p:column headerText="Poids" colspan="3"/>
+				<p:column headerText="Actions" rowspan="2"/>
+			</p:row>
+			<p:row>
+				<p:column headerText="Chargé"/>
+				<p:column headerText="Déchargé"/>
+				<p:column headerText="Perte"/>				
+			</p:row>
+		</p:columnGroup>
+	
+  		<p:column><h:outputText value="#{truck.code}" /></p:column>
+  		<p:column><h:outputText value="#{truck.product}" /></p:column>
+  		<p:column><h:outputText value="#{truck.weightInKiloGramOfProductAfterLoad}" /></p:column>
+  		<p:column><h:outputText value="#{truck.weightInKiloGramOfProductAfterUnload}" /></p:column>
+  		<p:column><h:outputText value="#{truck.weightInKiloGramOfProductLost}" /></p:column>
+  		<!-- Actions -->
+  		<p:column>
+  			<!--
+  			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryReadView">
+  				<f:param name="entityidentifier" value="#{delivery.identifier}"/>
+  			</p:button>
+  			-->
+  		</p:column>
+  	</p:dataTable>	
+
+</ui:composition>

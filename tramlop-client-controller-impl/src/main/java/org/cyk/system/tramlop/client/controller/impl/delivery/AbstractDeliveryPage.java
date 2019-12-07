@@ -76,8 +76,8 @@ public abstract class AbstractDeliveryPage extends AbstractPageContainerManagedI
 	protected Properties __getReadTrucksProperties__() {
 		return new Properties()
 			.setIsPageable(Boolean.FALSE)
-			.setQueryIdentifier(TruckPersistence.READ_BY_TASKS_COUNTS)
-			.setFilters(new FilterDto().addField(Truck.FIELD_TASKS_COUNTS, task.getOrderNumber()-1))
+			.setQueryIdentifier(TruckPersistence.READ_WHERE_DELIVERY_CLOSED_IS_FALSE_BY_TASKS_COUNTS)
+			.setFilters(new FilterDto().addField(Truck.FIELD_TASKS_COUNTS, CollectionHelper.listOf(Long.valueOf(task.getOrderNumber()-1))))
 			.setFields(Truck.FIELD_DRIVER+","+Truck.FIELD_DRIVERS);
 	}
 	

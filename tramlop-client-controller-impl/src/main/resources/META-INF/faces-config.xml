@@ -9,6 +9,11 @@
 		<from-view-id>*</from-view-id>
 		
 		<navigation-case>
+			<from-outcome>agreementListWhereClosedIsFalseView</from-outcome>
+			<to-view-id>/private/agreement/listwhereclosedisfalse.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>agreementCreateView</from-outcome>
 			<to-view-id>/private/agreement/create.jsf</to-view-id>
 			<redirect />
@@ -27,6 +32,11 @@
 		<navigation-case>
 			<from-outcome>deliveryBoardView</from-outcome>
 			<to-view-id>/private/delivery/board.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>deliveryListWhereClosedIsFalseView</from-outcome>
+			<to-view-id>/private/delivery/listwhereclosedisfalse.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>

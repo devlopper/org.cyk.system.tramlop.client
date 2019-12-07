@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<p:dataTable value="#{agreements}" var="agreement">
+		<p:columnGroup type="header">
+			<p:row>
+				<p:column headerText="Code"/>
+				<p:column headerText="Client"/>
+				<p:column headerText="Produits"/>
+				<p:column headerText="Actions"/>
+			</p:row>
+		</p:columnGroup>
+
+  		<p:column><h:outputText value="#{agreement.code}" /></p:column>
+  		<p:column><h:outputText value="#{agreement.customer.person.firstName} #{agreement.customer.person.lastNames}" /></p:column>
+  		<p:column><h:outputText value="#{agreement.products}" /></p:column>
+  		
+  		<p:column>
+  			<p:button value="Ouvrir" icon="fa fa-folder-open" outcome="agreementReadView">
+  				<f:param name="entityidentifier" value="#{agreement.identifier}"/>
+  			</p:button>
+  		</p:column>
+  	</p:dataTable>	
+
+</ui:composition>

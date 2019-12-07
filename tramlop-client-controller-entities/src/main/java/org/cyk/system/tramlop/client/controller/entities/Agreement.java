@@ -25,6 +25,8 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	private List<Truck> trucks;
 	private List<Place> arrivalPlaces;
 	private List<Driver> drivers;
+	private List<Delivery> deliveries;
+	private Boolean closed;
 	
 	public Agreement(String code,String customerCode,String departurePlaceCode) {
 		setCode(code);
@@ -140,4 +142,5 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	public static final String FIELD_TRUCKS = "trucks";
 	public static final String FIELD_ARRIVAL_PLACES = "arrivalPlaces";
 	public static final String FIELD_DRIVERS = "drivers";
+	public static final String FIELD_DELIVERIES = "deliveries";
 }

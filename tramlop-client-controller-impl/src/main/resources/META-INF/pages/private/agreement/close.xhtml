@@ -8,12 +8,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
 	
-    <cyk:page value="#{deliveryListWhereClosedIsFalsePage}">
-    	<ui:define name="centerCenter">.
-    		<ui:include src="__list__.xhtml">
-    			<ui:param name="deliveries" value="#{deliveryListWhereClosedIsFalsePage.deliveries}"/>
-    		</ui:include>
+    <cyk:page value="#{agreementClosePage}">
+    	<ui:define name="centerCenter">
+    		.
+    		<cyk:commandable value="#{agreementClosePage.closeCommandable}" />   		
     	</ui:define>
     </cyk:page>
-    
 </html>

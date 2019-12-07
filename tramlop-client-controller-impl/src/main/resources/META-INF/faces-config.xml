@@ -14,8 +14,18 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>agreementListWhereClosedIsTrueView</from-outcome>
+			<to-view-id>/private/agreement/listwhereclosedistrue.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>agreementCreateView</from-outcome>
 			<to-view-id>/private/agreement/create.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>agreementCloseView</from-outcome>
+			<to-view-id>/private/agreement/close.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
@@ -37,6 +47,11 @@
 		<navigation-case>
 			<from-outcome>deliveryListWhereClosedIsFalseView</from-outcome>
 			<to-view-id>/private/delivery/listwhereclosedisfalse.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>deliveryListWhereClosedIsTrueView</from-outcome>
+			<to-view-id>/private/delivery/listwhereclosedistrue.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>

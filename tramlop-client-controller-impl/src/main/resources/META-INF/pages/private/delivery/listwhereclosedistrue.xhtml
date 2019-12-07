@@ -8,10 +8,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
 	
-    <cyk:page value="#{deliveryListWhereClosedIsFalsePage}">
+    <cyk:page value="#{deliveryListWhereClosedIsTruePage}">
     	<ui:define name="centerCenter">.
     		<ui:include src="__list__.xhtml">
-    			<ui:param name="deliveries" value="#{deliveryListWhereClosedIsFalsePage.deliveries}"/>
+    			<ui:param name="deliveries" value="#{deliveryListWhereClosedIsTruePage.deliveries}"/>
+    		</ui:include>
+    		<p:separator/>
+    		<h3><h:outputText value="Cumul des poids par camion et par produit" /> </h3>
+    		<ui:include src="__listCumulByTruckByProduct__.xhtml">
+    			<ui:param name="trucks" value="#{deliveryListWhereClosedIsTruePage.trucks}"/>
     		</ui:include>
     	</ui:define>
     </cyk:page>

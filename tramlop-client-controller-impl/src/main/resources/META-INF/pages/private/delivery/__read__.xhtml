@@ -6,18 +6,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
-
-	<div class="ui-g">
-  		<div class="ui-g-2">
-  			<h:outputText value="Code" />
-  		</div>
-  		<div class="ui-g-10">
-  			<h:outputText value="#{delivery.code}" />
-  		</div>
-  	</div>
-  	
-  	<p:separator/>
-  	
+	
   	<p:dataTable value="#{delivery.tasks}" var="task">
   		<p:column headerText="Date">
   			<h:outputText value="#{task.existence.creationDate}" />

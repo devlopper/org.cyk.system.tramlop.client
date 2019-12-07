@@ -20,6 +20,9 @@ public class Product extends AbstractDataIdentifiableSystemStringIdentifiableBus
 	private BigDecimal lossRate;
 	
 	private Integer weightInKiloGram;
+	private Integer weightInKiloGramOfProductAfterLoad;
+	private Integer weightInKiloGramOfProductAfterUnload;
+	private Integer weightInKiloGramOfProductLost;
 	
 	public static final String FIELD_LOSS_RATE = "lossRate";
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM = "weightInKiloGram";

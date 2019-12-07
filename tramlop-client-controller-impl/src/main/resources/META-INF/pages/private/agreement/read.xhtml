@@ -55,8 +55,13 @@
     		<p:separator/>
     		<h3><h:outputText value="Cumul des poids par produit" /></h3>
     		<ui:include src="__listCumulByProduct__.xhtml">
+    			<ui:param name="agreement" value="#{agreementReadPage.agreement}"></ui:param>
     			<ui:param name="products" value="#{agreementReadPage.agreement.products}"/>
     		</ui:include>
+    		<p:separator/>
+    		<p:button value="Clore le contrat" outcome="agreementCloseView" icon="fa fa-sign-out" rendered="#{not agreementReadPage.agreement.closed}">
+    			<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
+    		</p:button>
     	</ui:define>
     </cyk:page>
     

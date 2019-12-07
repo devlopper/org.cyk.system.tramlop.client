@@ -8,6 +8,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
 	
-    <cyk:page value="#{deliveryListPage}"/>
+    <cyk:page value="#{deliveryListPage}">
+    	<ui:define name="centerCenter">.
+    		<ui:include src="__list__.xhtml">
+    			<ui:param name="deliveries" value="#{deliveryListPage.deliveries}"/>
+    		</ui:include>
+    	</ui:define>
+    </cyk:page>
     
 </html>

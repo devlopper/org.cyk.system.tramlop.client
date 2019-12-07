@@ -18,7 +18,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class AgreementListWhereClosedIsFalsePage extends AbstractPageContainerManagedImpl implements Serializable {
+public class AgreementListWhereClosedIsTruePage extends AbstractPageContainerManagedImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Collection<Agreement> agreements;
@@ -33,11 +33,11 @@ public class AgreementListWhereClosedIsFalsePage extends AbstractPageContainerMa
 		if(CollectionHelper.isNotEmpty(__agreements__)) {
 			for(Agreement agreement : __agreements__) {
 				if(Boolean.TRUE.equals(agreement.getClosed())) {
-					
-				}else {
 					if(agreements == null)
 						agreements = new ArrayList<>();
 					agreements.add(agreement);
+				}else {
+					
 				}				
 			}	
 		}	
@@ -46,7 +46,7 @@ public class AgreementListWhereClosedIsFalsePage extends AbstractPageContainerMa
 	
 	@Override
 	protected String __getWindowTitleValue__() {
-		return "Liste des contrats en cours";
+		return "Liste des contrats clos";
 	}
 	
 }

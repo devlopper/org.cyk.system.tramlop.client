@@ -23,6 +23,9 @@ public abstract class AbstractDeliveryReadPage extends AbstractPageContainerMana
 		delivery = __inject__(DeliveryController.class).readBySystemIdentifier(Faces.getRequestParameter("entityidentifier"),new Properties().setFields("tasks"));
 	}
 	
-	
+	@Override
+	protected String __getWindowTitleValue__() {
+		return "Livraison N° "+delivery.getCode();
+	}
 	
 }

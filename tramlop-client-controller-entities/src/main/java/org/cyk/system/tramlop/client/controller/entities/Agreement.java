@@ -143,4 +143,5 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	public static final String FIELD_ARRIVAL_PLACES = "arrivalPlaces";
 	public static final String FIELD_DRIVERS = "drivers";
 	public static final String FIELD_DELIVERIES = "deliveries";
+	public static final String FIELD_CLOSED = "closed";
 }

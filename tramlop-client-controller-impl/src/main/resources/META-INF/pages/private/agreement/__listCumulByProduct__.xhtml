@@ -22,16 +22,15 @@
 		</p:columnGroup>
 	
   		<p:column><h:outputText value="#{product.name}" /></p:column>
-  		<p:column><!--<h:outputText value="#{product.weightInKiloGramOfProductAfterLoad}" />--></p:column>
-  		<p:column><!--<h:outputText value="#{product.weightInKiloGramOfProductAfterUnload}" />--></p:column>
-  		<p:column><!--<h:outputText value="#{product.weightInKiloGramOfProductLost}" />--></p:column>
+  		<p:column><h:outputText value="#{product.weightInKiloGramOfProductAfterLoad}" /></p:column>
+  		<p:column><h:outputText value="#{product.weightInKiloGramOfProductAfterUnload}" /></p:column>
+  		<p:column><h:outputText value="#{product.weightInKiloGramOfProductLost}" /></p:column>
   		<!-- Actions -->
   		<p:column>
-  			<!--
-  			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryReadView">
-  				<f:param name="entityidentifier" value="#{delivery.identifier}"/>
+  			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryListView">
+  				<f:param name="agreement" value="#{agreement.identifier}"/>
+  				<f:param name="product" value="#{product.identifier}"/>
   			</p:button>
-  			-->
   		</p:column>
   	</p:dataTable>	
 

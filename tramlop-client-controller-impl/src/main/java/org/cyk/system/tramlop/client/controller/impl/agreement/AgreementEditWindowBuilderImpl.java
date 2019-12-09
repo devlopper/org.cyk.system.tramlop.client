@@ -1,4 +1,4 @@
-package org.cyk.system.tramlop.client.controller.impl;
+package org.cyk.system.tramlop.client.controller.impl.agreement;
 import java.io.Serializable;
 
 import org.cyk.system.tramlop.client.controller.entities.AgreementEditWindowBuilder;

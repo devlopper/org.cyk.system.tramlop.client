@@ -42,6 +42,7 @@ public class Delivery extends AbstractDataIdentifiableSystemStringIdentifiableBu
 	private Integer weightInKiloGramOfProductAfterLoad;
 	private Integer weightInKiloGramOfProductAfterUnload;
 	private Integer weightInKiloGramOfProductLost;
+	private Integer weightInKiloGramOfProductLostable;
 	private Product product;
 	private Place arrivalPlace;
 	
@@ -103,5 +104,6 @@ public class Delivery extends AbstractDataIdentifiableSystemStringIdentifiableBu
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_LOAD = "weightInKiloGramOfProductAfterLoad";
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_UNLOAD = "weightInKiloGramOfProductAfterUnload";
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_LOST = "weightInKiloGramOfProductLost";
+	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_LOSTABLE = "weightInKiloGramOfProductLostable";
 
 }

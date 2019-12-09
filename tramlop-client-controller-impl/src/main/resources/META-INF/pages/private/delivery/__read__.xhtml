@@ -5,11 +5,12 @@
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pe="http://primefaces.org/ui/extensions">
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:cyk_jsf="http://jsf.web.utility.cyk.org">
 	
   	<p:dataTable value="#{delivery.tasks}" var="task">
   		<p:column headerText="Date">
-  			<h:outputText value="#{task.existence.creationDate}" />
+  			<h:outputText value="#{cyk_jsf:formatLocalDateTimeFromString(task.existence.creationDate,'dd/MM/yyyy HH:mm')}" />
   		</p:column>
   		<p:column headerText="Opération">
   			<h:outputText value="#{task.name}" />

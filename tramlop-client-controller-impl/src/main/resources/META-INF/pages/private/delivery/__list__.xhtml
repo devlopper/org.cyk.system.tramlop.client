@@ -6,8 +6,16 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
-
-	<p:dataTable value="#{deliveries}" var="delivery">
+	
+	<style>
+		.weightInKiloGramOfProductLostIsNotNormal{
+			background: yellow !important;
+		}
+	</style>
+	
+	<p:dataTable value="#{deliveries}" var="delivery"
+		rowStyleClass="#{delivery.weightInKiloGramOfProductLost > delivery.weightInKiloGramOfProductLostable ? 'weightInKiloGramOfProductLostIsNotNormal' : ''}"
+	>
 		<p:columnGroup type="header">
 			<p:row>
 				<p:column headerText="Camion" colspan="2"/>
@@ -51,15 +59,12 @@
   		<p:column><h:outputText value="#{delivery.getTaskAt(4).weightInKiloGram}" /></p:column>
   		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductAfterUnload}" /></p:column>
   		<!-- Loss -->
-  		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductLost}" /></p:column>
+  		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductLost}|#{delivery.weightInKiloGramOfProductLostable}" /></p:column>
   		<!-- Actions -->
   		<p:column>
   			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryReadView">
   				<f:param name="entityidentifier" value="#{delivery.identifier}"/>
   			</p:button>
-  			<!--
-  			<p:commandButton value="Détails" icon="fa fa-eye" action="#{deliveriesController.showDialog(delivery)}"/>
-  			-->
   		</p:column>
   	</p:dataTable>	
 

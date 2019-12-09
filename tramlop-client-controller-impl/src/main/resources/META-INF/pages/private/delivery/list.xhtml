@@ -9,7 +9,11 @@
       xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
 	
     <cyk:page value="#{deliveryListPage}">
-    	<ui:define name="centerCenter">.
+    	<ui:define name="centerCenter">
+    		<p:button value="Contrat" outcome="agreementReadView" icon="fa fa-folder-open" rendered="#{deliveryListPage.agreement != null}">
+    			<f:param name="entityidentifier" value="#{deliveryListPage.agreement.identifier}" />
+    		</p:button>
+    		<p:separator/>
     		<ui:include src="__list__.xhtml">
     			<ui:param name="deliveries" value="#{deliveryListPage.deliveries}"/>
     		</ui:include>

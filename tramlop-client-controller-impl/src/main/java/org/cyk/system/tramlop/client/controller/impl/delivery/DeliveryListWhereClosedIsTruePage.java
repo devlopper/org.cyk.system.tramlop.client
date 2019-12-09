@@ -7,34 +7,23 @@ import java.util.Collection;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import org.cyk.system.tramlop.client.controller.api.DeliveryController;
 import org.cyk.system.tramlop.client.controller.entities.Delivery;
 import org.cyk.system.tramlop.client.controller.entities.Product;
-import org.cyk.system.tramlop.client.controller.entities.Task;
 import org.cyk.system.tramlop.client.controller.entities.Truck;
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.number.NumberHelper;
-import org.cyk.utility.__kernel__.properties.Properties;
-import org.cyk.utility.client.controller.web.jsf.primefaces.AbstractPageContainerManagedImpl;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class DeliveryListWhereClosedIsTruePage extends AbstractPageContainerManagedImpl implements Serializable {
+public class DeliveryListWhereClosedIsTruePage extends AbstractDeliveryListPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Collection<Delivery> deliveries;
 	private Collection<Truck> trucks;
 	
 	@Override
-	protected void __listenPostConstruct__() {
-		super.__listenPostConstruct__();
-		Collection<Delivery> __deliveries__ = __inject__(DeliveryController.class).read(new Properties().setFields(Delivery.FIELD_TASKS+","+Delivery.FIELD_TASKS+"."+Task.FIELD_EXISTENCE
-				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_WEIGHT_IN_KILO_GRAM+","+Delivery.FIELD_TASKS+"."+Task.FIELD_PRODUCT
-				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_UNLOADING_PLACE+","+Delivery.FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_LOAD
-				+","+Delivery.FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_UNLOAD+","+Delivery.FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_LOST));
-		
+	protected void __process__(Collection<Delivery> __deliveries__) {
 		//TODO those data should be treated from persistence request
 		if(CollectionHelper.isNotEmpty(__deliveries__)) {
 			for(Delivery delivery : __deliveries__) {			
@@ -61,6 +50,7 @@ public class DeliveryListWhereClosedIsTruePage extends AbstractPageContainerMana
 					trucks.add(truck);
 				}
 				truck.setProduct(product);
+				truck.setAgreement(delivery.getAgreement());
 				truck.setWeightInKiloGramOfProductAfterLoad(
 						NumberHelper.getInteger(NumberHelper.add(truck.getWeightInKiloGramOfProductAfterLoad(),delivery.getWeightInKiloGramOfProductAfterLoad())));
 				truck.setWeightInKiloGramOfProductAfterUnload(

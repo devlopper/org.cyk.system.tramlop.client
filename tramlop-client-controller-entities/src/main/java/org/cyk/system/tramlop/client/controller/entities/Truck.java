@@ -15,6 +15,7 @@ import lombok.Setter;
 public class Truck extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	private Agreement agreement;
 	private Driver driver;
 	private List<Driver> drivers;
 	private Integer weightInKiloGramOfProductAfterLoad;

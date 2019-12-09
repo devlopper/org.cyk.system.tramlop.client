@@ -29,11 +29,11 @@
   		<p:column><h:outputText value="#{truck.weightInKiloGramOfProductLost}" /></p:column>
   		<!-- Actions -->
   		<p:column>
-  			<!--
-  			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryReadView">
-  				<f:param name="entityidentifier" value="#{delivery.identifier}"/>
+  			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryListView">
+  				<f:param name="agreement" value="#{truck.agreement.identifier}"/>
+  				<f:param name="truck" value="#{truck.identifier}"/>
+  				<f:param name="product" value="#{truck.product.identifier}"/>
   			</p:button>
-  			-->
   		</p:column>
   	</p:dataTable>	
 

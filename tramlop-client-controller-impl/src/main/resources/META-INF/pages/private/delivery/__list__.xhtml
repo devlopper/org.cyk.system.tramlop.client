@@ -15,7 +15,7 @@
 	</style>
 	
 	<p:dataTable value="#{deliveries}" var="delivery"
-		rowStyleClass="#{delivery.weightInKiloGramOfProductLost > delivery.weightInKiloGramOfProductLostable ? 'weightInKiloGramOfProductLostIsNotNormal' : ''}"
+		rowStyleClass="#{delivery.weightInKiloGramOfProductLost > delivery.weightInKiloGramOfProductLostable or delivery.durationInMinute > delivery.path.durationInMinute ? 'weightInKiloGramOfProductLostIsNotNormal' : ''}"
 	>
 		<p:columnGroup type="header">
 			<p:row>
@@ -61,9 +61,19 @@
   		<p:column><h:outputText value="#{delivery.getTaskAt(4).weightInKiloGram}" /></p:column>
   		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductAfterUnload}" /></p:column>
   		<!-- Loss -->
-  		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductLost}|#{delivery.weightInKiloGramOfProductLostable}" /></p:column>
+  		<p:column>
+  			<ui:fragment rendered="#{delivery.weightInKiloGramOfProductLost > delivery.weightInKiloGramOfProductLostable}">
+  				<i class="fa fa-warning" />
+  			</ui:fragment>
+  			<h:outputText value="#{delivery.weightInKiloGramOfProductLost}|#{delivery.weightInKiloGramOfProductLostable}" />
+  		</p:column>
   		<!-- Duration -->
-  		<p:column><h:outputText value="#{cyk_jsf:formatDurationTillNow(delivery.getTaskAt(2).existence.creationDate)}|#{delivery.path.durationInMinute}" /></p:column>
+  		<p:column>
+  			<ui:fragment rendered="#{delivery.durationInMinute > delivery.path.durationInMinute}">
+  				<i class="fa fa-clock-o" />
+  			</ui:fragment>  			
+  			<h:outputText value="#{delivery.durationInMinute}|#{delivery.path.durationInMinute}" />
+  		</p:column>
   		<!-- Actions -->
   		<p:column>
   			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryReadView">

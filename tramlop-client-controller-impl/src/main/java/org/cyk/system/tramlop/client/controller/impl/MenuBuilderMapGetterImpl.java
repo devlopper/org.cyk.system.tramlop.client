@@ -19,6 +19,8 @@ public class MenuBuilderMapGetterImpl extends AbstractMenuBuilderMapInstantiator
 				__inject__(MenuItemBuilder.class).setCommandableName("Contrat").setCommandableIcon(Icon.FILE).addChild(
 						__inject__(MenuItemBuilder.class).setCommandableName("Contrats en cours").setCommandableNavigationIdentifier("agreementListWhereClosedIsFalseView")
 						,__inject__(MenuItemBuilder.class).setCommandableName("Contrats clos").setCommandableNavigationIdentifier("agreementListWhereClosedIsTrueView")
+						,__inject__(MenuItemBuilder.class).setCommandableName("Nouveau contrat").setCommandableNavigationIdentifier("agreementCreateView")
+						.setCommandableIcon(Icon.PLUS)
 						)
 				,__inject__(MenuItemBuilder.class).setCommandableName("Livraison").setCommandableIcon(Icon.TRUCK)
 					.addChild(

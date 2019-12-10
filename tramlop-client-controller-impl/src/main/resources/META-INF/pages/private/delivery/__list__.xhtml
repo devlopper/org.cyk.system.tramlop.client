@@ -5,7 +5,8 @@
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pe="http://primefaces.org/ui/extensions">
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:cyk_jsf="http://jsf.web.utility.cyk.org">
 	
 	<style>
 		.weightInKiloGramOfProductLostIsNotNormal{
@@ -22,6 +23,7 @@
 				<p:column headerText="Chargement" colspan="5"/>
 				<p:column headerText="Déchargement" colspan="3"/>
 				<p:column headerText="Perte" rowspan="3"/>
+				<p:column headerText="Durée" rowspan="3"/>
 				<p:column headerText="Actions" rowspan="3"/>
 			</p:row>
 			<p:row>
@@ -60,6 +62,8 @@
   		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductAfterUnload}" /></p:column>
   		<!-- Loss -->
   		<p:column><h:outputText value="#{delivery.weightInKiloGramOfProductLost}|#{delivery.weightInKiloGramOfProductLostable}" /></p:column>
+  		<!-- Duration -->
+  		<p:column><h:outputText value="#{cyk_jsf:formatDurationTillNow(delivery.getTaskAt(2).existence.creationDate)}|#{delivery.path.durationInMinute}" /></p:column>
   		<!-- Actions -->
   		<p:column>
   			<p:button value="Détails" icon="fa fa-eye" outcome="deliveryReadView">

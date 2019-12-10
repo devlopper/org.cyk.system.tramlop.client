@@ -17,7 +17,6 @@ import org.cyk.system.tramlop.client.controller.entities.Driver;
 import org.cyk.system.tramlop.client.controller.entities.Place;
 import org.cyk.system.tramlop.client.controller.entities.Product;
 import org.cyk.system.tramlop.client.controller.entities.Truck;
-import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.instance.SelectionMany;
 import org.cyk.utility.__kernel__.properties.Properties;
 import org.cyk.utility.__kernel__.system.action.SystemActionCreate;
@@ -127,10 +126,11 @@ public class AgreementCreatePage extends AbstractPageContainerManagedImpl implem
 		agreement.setArrivalPlaces((List<Place>) arrivalPlaces.getValue());
 		
 		//TODO to be removed
+		/*
 		if(CollectionHelper.isNotEmpty(agreement.getArrivalPlaces()))
 			for(Place place : agreement.getArrivalPlaces())
 				place.setDurationInMinute(30);
-		
+		*/
 		__inject__(AgreementController.class).create(agreement);
 	}
 	

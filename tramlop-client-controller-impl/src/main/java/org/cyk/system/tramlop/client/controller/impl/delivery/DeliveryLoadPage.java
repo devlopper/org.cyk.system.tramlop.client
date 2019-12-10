@@ -61,6 +61,14 @@ public class DeliveryLoadPage extends AbstractDeliveryPage implements Serializab
 	@Override
 	protected void __processOnSelect__(Truck truck) {
 		super.__processOnSelect__(truck);		
+		if(product.getValue() == null && CollectionHelper.getSize(product.getChoices()) == 1) {
+			product.setValue(CollectionHelper.getFirst(product.getChoices()));
+		}
+		
+		if(unloadingPlace.getValue() == null && CollectionHelper.getSize(unloadingPlace.getChoices()) == 1) {
+			unloadingPlace.setValue(CollectionHelper.getFirst(unloadingPlace.getChoices()));
+		}
+		
 		if(driver.getValue() == null && CollectionHelper.getSize(driver.getChoices()) == 1) {
 			driver.setValue(CollectionHelper.getFirst(driver.getChoices()));
 		}

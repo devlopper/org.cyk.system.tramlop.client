@@ -8,6 +8,7 @@ import org.cyk.utility.client.controller.component.annotation.Input;
 import org.cyk.utility.client.controller.component.annotation.InputChoice;
 import org.cyk.utility.client.controller.component.annotation.InputChoiceOne;
 import org.cyk.utility.client.controller.component.annotation.InputChoiceOneCombo;
+import org.cyk.utility.client.controller.component.annotation.InputNumber;
 import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringImpl;
 
 import lombok.Getter;
@@ -24,4 +25,6 @@ public class AgreementArrivalPlace extends AbstractDataIdentifiableSystemStringI
 	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Place place;
 	
+	@NotNull @Input @InputNumber
+	private Integer durationInMinute;
 }

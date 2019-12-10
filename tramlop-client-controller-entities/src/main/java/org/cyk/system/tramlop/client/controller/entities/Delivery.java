@@ -45,6 +45,7 @@ public class Delivery extends AbstractDataIdentifiableSystemStringIdentifiableBu
 	private Integer weightInKiloGramOfProductLostable;
 	private Product product;
 	private Place arrivalPlace;
+	private Path path;
 	
 	private ArrayList<Task> tasks;
 	private ArrayList<Truck> trucks;
@@ -101,6 +102,7 @@ public class Delivery extends AbstractDataIdentifiableSystemStringIdentifiableBu
 	public static final String FIELD_DRIVER = "driver";
 	public static final String FIELD_TASKS = "tasks";
 	public static final String FIELD_CLOSED = "closed";
+	public static final String FIELD_PATH = "path";
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_LOAD = "weightInKiloGramOfProductAfterLoad";
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_UNLOAD = "weightInKiloGramOfProductAfterUnload";
 	public static final String FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_LOST = "weightInKiloGramOfProductLost";

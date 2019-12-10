@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
 
-	<p:dataTable value="#{products}" var="product">
+	<p:dataTable value="#{products}" var="product" emptyMessage="Aucun produits trouvés">
 		<p:columnGroup type="header">
 			<p:row>
 				<p:column headerText="Produit" rowspan="2"/>

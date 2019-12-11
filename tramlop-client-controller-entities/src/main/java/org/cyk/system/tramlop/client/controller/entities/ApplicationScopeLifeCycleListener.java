@@ -18,7 +18,7 @@ public class ApplicationScopeLifeCycleListener extends AbstractApplicationScopeL
 		PersistableClassesGetter.COLLECTION.set(List.of(
 				IncidentResolution.class,Incident.class,Loading.class,Weighing.class,DeliveryTask.class,Delivery.class
 				,AgreementArrivalPlace.class,AgreementPath.class,AgreementProduct.class,AgreementTruck.class,AgreementTruckSecondaryDriver.class,Agreement.class
-				,Path.class,Customer.class,Driver.class,Place.class,Truck.class,Product.class,Task.class,IncidentType.class));
+				,Path.class,Customer.class,Driver.class,Place.class,Truck.class,Product.class,Task.class,IncidentType.class,Employee.class));
 	}
 	
 	@Override

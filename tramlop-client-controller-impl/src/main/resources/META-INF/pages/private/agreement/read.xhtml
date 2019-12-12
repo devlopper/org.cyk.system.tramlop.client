@@ -21,20 +21,23 @@
     			</div>
     			<div class="ui-g-12">
     				<div class="ui-g-4">
-    					<h:outputText value="Produits" />
-    				</div>
-    				<div class="ui-g-8">
-    					<h:outputText value="#{agreementReadPage.agreement.products}" />
-    				</div>
-    			</div>
-    			<div class="ui-g-12">
-    				<div class="ui-g-4">
     					<h:outputText value="Lieu de départ" />
     				</div>
     				<div class="ui-g-8">
     					<h:outputText value="#{agreementReadPage.agreement.departurePlace}" />
     				</div>
     			</div>
+    			<div class="ui-g-12">
+    				<div class="ui-g-4">
+    					<h:outputText value="Produits" />
+    					<p:button icon="fa fa-pencil" outcome="agreementEditProductsView">
+    						<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
+    					</p:button>
+    				</div>
+    				<div class="ui-g-8">
+    					<h:outputText value="#{agreementReadPage.agreement.products}" />
+    				</div>
+    			</div>    			
     			<div class="ui-g-12">
     				<div class="ui-g-4">
     					<h:outputText value="Lieu d'arrivée" />

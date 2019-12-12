@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import org.cyk.system.tramlop.client.controller.entities.AbstractPersonImpl;
+import org.cyk.system.tramlop.client.controller.entities.Agreement;
 import org.cyk.system.tramlop.client.controller.entities.Contact;
 import org.cyk.system.tramlop.client.controller.entities.Person;
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
@@ -19,10 +20,11 @@ public class SystemActionFieldsNamesGetterImpl extends AbstractSystemActionField
 
 	@Override
 	protected Collection<String> __get__(Class<? extends SystemAction> systemActionClass, Object systemActionIdentifier,Class<?> entityClass) {
-		/*if(Shipment.class.equals(entityClass) && ClassHelper.isInstanceOf(systemActionClass, SystemActionList.class))
-			return List.of(Shipment.FIELD_CODE,FieldHelper.join(Shipment.FIELD_LOADING),Shipment.FIELD_PLACE_OF_DEPARTURE,
-					Shipment.FIELD_PLACE_OF_ARRIVAL,Shipment.FIELD_STATUS);
-	
+		if(Agreement.class.equals(entityClass)) {
+			if(ClassHelper.isInstanceOf(systemActionClass, SystemActionList.class))
+				return CollectionHelper.listOf(Agreement.FIELD_CODE,Agreement.FIELD_CUSTOMER,Agreement.FIELD_DEPARTURE_PLACE);
+		}
+		/*
 		if(Driver.class.equals(entityClass) && ClassHelper.isInstanceOf(systemActionClass, SystemActionList.class))
 			return List.of(Driver.FIELD_CODE,Driver.FIELD_FIRST_NAME,Driver.FIELD_LAST_NAMES,Driver.FIELD_PHONE_NUMBER);
 		*/

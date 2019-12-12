@@ -3,6 +3,7 @@ package org.cyk.system.tramlop.client.controller.impl;
 import java.io.Serializable;
 import java.security.Principal;
 
+import org.cyk.system.tramlop.client.controller.entities.Agreement;
 import org.cyk.utility.__kernel__.icon.Icon;
 import org.cyk.utility.__kernel__.klass.PersistableClassesGetter;
 import org.cyk.utility.client.controller.component.menu.AbstractMenuBuilderMapInstantiatorImpl;
@@ -19,9 +20,9 @@ public class MenuBuilderMapGetterImpl extends AbstractMenuBuilderMapInstantiator
 				__inject__(MenuItemBuilder.class).setCommandableName("Contrat").setCommandableIcon(Icon.FILE).addChild(
 						__inject__(MenuItemBuilder.class).setCommandableName("Contrats en cours").setCommandableNavigationIdentifier("agreementListWhereClosedIsFalseView")
 						,__inject__(MenuItemBuilder.class).setCommandableName("Contrats clos").setCommandableNavigationIdentifier("agreementListWhereClosedIsTrueView")
-						,__inject__(MenuItemBuilder.class).setCommandableName("Nouveau contrat").setCommandableNavigationIdentifier("agreementCreateView")
+						//,__inject__(MenuItemBuilder.class).setCommandableName("Nouveau contrat").setCommandableNavigationIdentifier("agreementCreateView")
 						.setCommandableIcon(Icon.PLUS)
-						)
+						).list(Agreement.class)
 				,__inject__(MenuItemBuilder.class).setCommandableName("Livraison").setCommandableIcon(Icon.TRUCK)
 					.addChild(
 							__inject__(MenuItemBuilder.class).setCommandableName("Livraisons en cours").setCommandableNavigationIdentifier("deliveryListWhereClosedIsFalseView")

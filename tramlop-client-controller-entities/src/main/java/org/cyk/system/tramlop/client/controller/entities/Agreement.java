@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.cyk.utility.__kernel__.array.ArrayHelper;
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.instance.InstanceGetter;
 import org.cyk.utility.__kernel__.string.StringHelper;
+import org.cyk.utility.client.controller.component.annotation.Input;
+import org.cyk.utility.client.controller.component.annotation.InputChoice;
+import org.cyk.utility.client.controller.component.annotation.InputChoiceOne;
+import org.cyk.utility.client.controller.component.annotation.InputChoiceOneCombo;
 import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl;
 
 import lombok.Getter;
@@ -19,8 +25,12 @@ import lombok.Setter;
 public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Customer customer;
+	
+	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Place departurePlace;
+	
 	private List<Product> products;
 	private List<Truck> trucks;
 	private List<Place> arrivalPlaces;
@@ -144,4 +154,6 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	public static final String FIELD_DRIVERS = "drivers";
 	public static final String FIELD_DELIVERIES = "deliveries";
 	public static final String FIELD_CLOSED = "closed";
+	public static final String FIELD_CUSTOMER = "customer";
+	public static final String FIELD_DEPARTURE_PLACE = "departurePlace";
 }

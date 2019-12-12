@@ -18,9 +18,16 @@
 			<to-view-id>/private/agreement/listwhereclosedistrue.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
+		<!--
 		<navigation-case>
 			<from-outcome>agreementCreateView</from-outcome>
 			<to-view-id>/private/agreement/create.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		-->
+		<navigation-case>
+			<from-outcome>agreementEditProductsView</from-outcome>
+			<to-view-id>/private/agreement/editproducts.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
@@ -28,11 +35,13 @@
 			<to-view-id>/private/agreement/close.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
+		<!--
 		<navigation-case>
 			<from-outcome>agreementListView</from-outcome>
 			<to-view-id>/private/agreement/list.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
+		-->
 		<navigation-case>
 			<from-outcome>agreementReadView</from-outcome>
 			<to-view-id>/private/agreement/read.jsf</to-view-id>

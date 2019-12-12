@@ -7,36 +7,24 @@ import java.util.Collection;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import org.cyk.system.tramlop.client.controller.api.AgreementController;
 import org.cyk.system.tramlop.client.controller.api.DeliveryController;
-import org.cyk.system.tramlop.client.controller.entities.Agreement;
 import org.cyk.system.tramlop.client.controller.entities.Delivery;
 import org.cyk.system.tramlop.client.controller.entities.Product;
 import org.cyk.system.tramlop.client.controller.entities.Task;
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
-import org.cyk.utility.__kernel__.constant.ConstantCharacter;
 import org.cyk.utility.__kernel__.number.NumberHelper;
 import org.cyk.utility.__kernel__.properties.Properties;
-import org.cyk.utility.__kernel__.string.StringHelper;
-import org.cyk.utility.client.controller.web.jsf.primefaces.AbstractPageContainerManagedImpl;
-import org.omnifaces.util.Faces;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class AgreementReadPage extends AbstractPageContainerManagedImpl implements Serializable {
+public class AgreementReadPage extends AbstractAgreementReadPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Agreement agreement;
-	
 	@Override
 	protected void __listenPostConstruct__() {
 		super.__listenPostConstruct__();
-		agreement = __inject__(AgreementController.class).readBySystemIdentifier(Faces.getRequestParameter("entityidentifier"),new Properties()
-				.setFields(StringHelper.concatenate(CollectionHelper.listOf(Agreement.FIELD_PRODUCTS,Agreement.FIELD_ARRIVAL_PLACES,Agreement.FIELD_TRUCKS)
-						, ConstantCharacter.COMA.toString())));
-		
 		Collection<Delivery> __deliveries__ = __inject__(DeliveryController.class).read(new Properties().setFields(Delivery.FIELD_TASKS+","+Delivery.FIELD_TASKS+"."+Task.FIELD_EXISTENCE
 				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_WEIGHT_IN_KILO_GRAM+","+Delivery.FIELD_TASKS+"."+Task.FIELD_PRODUCT
 				+","+Delivery.FIELD_TASKS+"."+Task.FIELD_UNLOADING_PLACE+","+Delivery.FIELD_WEIGHT_IN_KILO_GRAM_OF_PRODUCT_AFTER_LOAD

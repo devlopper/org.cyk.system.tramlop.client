@@ -29,29 +29,41 @@
     			</div>
     			<div class="ui-g-12">
     				<div class="ui-g-4">
-    					<h:outputText value="Produits" />
-    					<p:button icon="fa fa-pencil" outcome="agreementEditProductsView">
+    					<p:button value="Produits" icon="fa fa-pencil" outcome="agreementEditProductsView">
     						<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
     					</p:button>
     				</div>
     				<div class="ui-g-8">
-    					<h:outputText value="#{agreementReadPage.agreement.products}" />
+    					<p:dataTable value="#{agreementReadPage.agreement.products}" var="product">
+    						<p:column headerText="Nom"><h:outputText value="#{product.name}" /></p:column>
+    						<p:column headerText="Poids en kilogramme"><h:outputText value="#{product.weightInKiloGram}" /></p:column>
+    					</p:dataTable>
     				</div>
     			</div>    			
     			<div class="ui-g-12">
     				<div class="ui-g-4">
-    					<h:outputText value="Lieu d'arrivée" />
+    					<p:button value="Lieux de déchargement" icon="fa fa-pencil" outcome="agreementEditArrivalPlacesView">
+    						<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
+    					</p:button>
     				</div>
     				<div class="ui-g-8">
-    					<h:outputText value="#{agreementReadPage.agreement.arrivalPlaces}" />
+    					<p:dataTable value="#{agreementReadPage.agreement.arrivalPlaces}" var="arrivalPlace">
+    						<p:column headerText="Nom"><h:outputText value="#{arrivalPlace.name}" /></p:column>
+    						<p:column headerText="Durée de parcours en minute"><h:outputText value="#{arrivalPlace.durationInMinute}" /></p:column>
+    					</p:dataTable>
     				</div>
     			</div>
     			<div class="ui-g-12">
     				<div class="ui-g-4">
-    					<h:outputText value="Camions" />
+    					<p:button value="Camions" icon="fa fa-pencil" outcome="agreementEditTrucksView">
+    						<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
+    					</p:button>
     				</div>
     				<div class="ui-g-8">
-    					<h:outputText value="#{agreementReadPage.agreement.trucks}" />
+    					<p:dataTable value="#{agreementReadPage.agreement.trucks}" var="truck">
+    						<p:column headerText="Immatriculation"><h:outputText value="#{truck.code}" /></p:column>
+    						<p:column headerText="Conducteur"><h:outputText value="#{truck.driver.person.firstName} #{truck.driver.person.lastNames}" /></p:column>
+    					</p:dataTable>
     				</div>
     			</div>
     		</div>

@@ -7,6 +7,7 @@ import javax.inject.Named;
 
 import org.cyk.system.tramlop.client.controller.api.AgreementController;
 import org.cyk.system.tramlop.client.controller.entities.Agreement;
+import org.cyk.system.tramlop.client.controller.entities.Place;
 import org.cyk.system.tramlop.client.controller.entities.Product;
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.constant.ConstantCharacter;
@@ -30,7 +31,9 @@ public abstract class AbstractAgreementReadPage extends AbstractPageContainerMan
 		super.__listenPostConstruct__();
 		agreement = __inject__(AgreementController.class).readBySystemIdentifier(Faces.getRequestParameter("entityidentifier"),new Properties()
 				.setFields(StringHelper.concatenate(CollectionHelper.listOf(
-						Agreement.FIELD_PRODUCTS,FieldHelper.join(Agreement.FIELD_PRODUCTS,Product.FIELD_WEIGHT_IN_KILO_GRAM),Agreement.FIELD_ARRIVAL_PLACES,Agreement.FIELD_TRUCKS)
+						Agreement.FIELD_PRODUCTS,FieldHelper.join(Agreement.FIELD_PRODUCTS,Product.FIELD_WEIGHT_IN_KILO_GRAM)
+						,Agreement.FIELD_ARRIVAL_PLACES,FieldHelper.join(Agreement.FIELD_ARRIVAL_PLACES,Place.FIELD_DURATION_IN_MINUTE)
+						,Agreement.FIELD_TRUCKS)
 						, ConstantCharacter.COMA.toString())));
 	}
 	

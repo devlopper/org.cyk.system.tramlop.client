@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
+	
+    <cyk:page value="#{agreementEditArrivalPlacesPage}">
+    	<ui:define name="centerCenter">
+    		.
+    		<ui:decorate template="/input/select/many/dataTable.xhtml">
+    			<ui:param name="controller" value="#{agreementEditArrivalPlacesPage}"/>
+    			<ui:param name="addCommandable" value="#{agreementEditArrivalPlacesPage.addArrivalPlaceCommandable}"/>
+    			<ui:param name="selection" value="#{agreementEditArrivalPlacesPage.arrivalPlaces}"/>
+    			<ui:param name="selectableInputId" value="arrivalPlace"/>
+    			<ui:param name="dataTableId" value="arrivalPlaces"/>
+    			<ui:param name="selectableLabel" value="Lieu d'arrivée"/>
+    			<ui:param name="header" value="Trajets"/>
+    			
+    			<ui:define name="dataTableColumnsOthers">
+	   				<p:column headerText="Durée en minute">
+	   					<p:inputNumber value="#{selected.durationInMinute}" decimalPlaces="0"/>
+	   				</p:column>
+    			</ui:define>    			
+    		</ui:decorate>
+    		<p:separator/>
+    		<cyk:commandable value="#{agreementEditArrivalPlacesPage.updateCommandable}" />   		
+    	</ui:define>
+    </cyk:page>
+</html>

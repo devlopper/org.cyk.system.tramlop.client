@@ -31,6 +31,16 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>agreementEditArrivalPlacesView</from-outcome>
+			<to-view-id>/private/agreement/editarrivalplaces.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>agreementEditTrucksView</from-outcome>
+			<to-view-id>/private/agreement/edittrucks.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>agreementCloseView</from-outcome>
 			<to-view-id>/private/agreement/close.jsf</to-view-id>
 			<redirect />

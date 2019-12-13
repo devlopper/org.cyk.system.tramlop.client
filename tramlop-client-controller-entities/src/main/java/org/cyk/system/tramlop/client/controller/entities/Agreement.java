@@ -142,7 +142,9 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	public Agreement addArrivalPlace(String code,Integer durationInMinute) {
 		if(StringHelper.isBlank(code))
 			return this;
-		getArrivalPlaces(Boolean.TRUE).add(InstanceGetter.getInstance().getByBusinessIdentifier(Place.class, code).setDurationInMinute(durationInMinute));
+		Place place = InstanceGetter.getInstance().getByBusinessIdentifier(Place.class, code);
+		place.setDurationInMinute(durationInMinute);
+		getArrivalPlaces(Boolean.TRUE).add(place);
 		return this;
 	}
 

@@ -11,62 +11,109 @@
     <cyk:page value="#{agreementReadPage}">
     	<ui:define name="centerCenter">.
     		<div class="ui-g">
-    			<div class="ui-g-12">
-    				<div class="ui-g-4">
-    					<h:outputText value="Client" />
-    				</div>
-    				<div class="ui-g-8">
-    					<h:outputText value="#{agreementReadPage.agreement.customer}" />
-    				</div>
-    			</div>
-    			<div class="ui-g-12">
-    				<div class="ui-g-4">
-    					<h:outputText value="Lieu de départ" />
-    				</div>
-    				<div class="ui-g-8">
-    					<h:outputText value="#{agreementReadPage.agreement.departurePlace}" />
-    				</div>
-    			</div>
-    			<div class="ui-g-12">
-    				<div class="ui-g-4">
-    					<p:button value="Produits" icon="fa fa-pencil" outcome="agreementEditProductsView">
-    						<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
-    					</p:button>
-    				</div>
-    				<div class="ui-g-8">
-    					<p:dataTable value="#{agreementReadPage.agreement.products}" var="product">
-    						<p:column headerText="Nom"><h:outputText value="#{product.name}" /></p:column>
-    						<p:column headerText="Poids en kilogramme"><h:outputText value="#{product.weightInKiloGram}" /></p:column>
-    					</p:dataTable>
-    				</div>
-    			</div>    			
-    			<div class="ui-g-12">
-    				<div class="ui-g-4">
-    					<p:button value="Lieux de déchargement" icon="fa fa-pencil" outcome="agreementEditArrivalPlacesView">
-    						<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
-    					</p:button>
-    				</div>
-    				<div class="ui-g-8">
-    					<p:dataTable value="#{agreementReadPage.agreement.arrivalPlaces}" var="arrivalPlace">
-    						<p:column headerText="Nom"><h:outputText value="#{arrivalPlace.name}" /></p:column>
-    						<p:column headerText="Durée de parcours en minute"><h:outputText value="#{arrivalPlace.durationInMinute}" /></p:column>
-    					</p:dataTable>
-    				</div>
-    			</div>
-    			<div class="ui-g-12">
-    				<div class="ui-g-4">
-    					<p:button value="Camions" icon="fa fa-pencil" outcome="agreementEditTrucksView">
-    						<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
-    					</p:button>
-    				</div>
-    				<div class="ui-g-8">
-    					<p:dataTable value="#{agreementReadPage.agreement.trucks}" var="truck">
-    						<p:column headerText="Immatriculation"><h:outputText value="#{truck.code}" /></p:column>
-    						<p:column headerText="Conducteur"><h:outputText value="#{truck.driver.person.firstName} #{truck.driver.person.lastNames}" /></p:column>
-    					</p:dataTable>
-    				</div>
-    			</div>
-    		</div>
+	    		<div class="ui-g-7">
+	    			<div class="ui-g-12">
+	    				<div class="ui-g-3">
+	    					<h:outputText value="Client" />
+	    				</div>
+	    				<div class="ui-g-9">
+	    					<h:outputText value="#{agreementReadPage.agreement.customer}" />
+	    				</div>
+	    			</div>
+	    			<div class="ui-g-12">
+	    				<div class="ui-g-3">
+	    					<h:outputText value="Lieu de départ" />
+	    				</div>
+	    				<div class="ui-g-9">
+	    					<h:outputText value="#{agreementReadPage.agreement.departurePlace}" />
+	    				</div>
+	    			</div>
+	    			<div class="ui-g-12">
+	    				<ui:decorate template="/input/select/many/datatable/default.xhtml">
+			    			<ui:param name="dataTable" value="#{agreementReadPage.agreementProductDataTable}"/>
+			    			<ui:define name="middleColumns">
+			    				<p:column headerText="Nom">
+				    				<h:outputText value="#{record.product.name}" />
+				    			</p:column>
+				    			<p:column headerText="Poids en kilogramme">
+				    				<h:outputText value="#{record.weightInKiloGram}" />
+				    			</p:column>
+			    			</ui:define>
+			    			<ui:define name="dialogContent">
+			    				<ui:decorate template="/input/select/many/autoComplete.xhtml">
+									<ui:param name="autoComplete" value="#{__page__.products}"/>
+								</ui:decorate>
+			    			</ui:define>
+			    		</ui:decorate>	 
+	    				<!--
+	    				<p:dataTable id="productDataTable" value="#{agreementReadPage.agreement.agreementProducts}" var="agreementProduct" rowIndexVar="rowIndex">
+			    			<f:facet name="header">
+			    				<h:outputText value="Produits" />
+			    			</f:facet>
+			    			<p:column width="60">
+			    				<h:outputText value="#{rowIndex+1}" />
+			    				<f:facet name="footer">
+			    					<p:commandButton title="Ajouter" icon="fa fa-plus" action="#{agreementReadPage.openDialog('add.product')}" update=":form:dialogOutputPanel"/>
+			    				</f:facet>
+			    			</p:column>
+			    			<p:column headerText="Nom">
+			    				<h:outputText value="#{agreementProduct.product.name}" />
+			    			</p:column>
+			    			<p:column headerText="Poids en kilogramme">
+			    				<h:outputText value="#{agreementProduct.weightInKiloGram}" />
+			    			</p:column>
+			    			<p:column width="60">
+			    				<p:commandButton title="Retirer" icon="fa fa-minus" action="#{agreementReadPage.removeProduct(agreementProduct)}" update=":form:productDataTable"/>
+			    			</p:column>
+			    		</p:dataTable>
+			    		-->
+	    			</div>
+	    			<div class="ui-g-12">
+	    				<p:dataTable id="arrivalPlaceDataTable" value="#{agreementReadPage.agreement.agreementArrivalPlaces}" var="agreementArrivalPlace" rowIndexVar="rowIndex">
+			    			<p:column width="60">
+			    				<h:outputText value="#{rowIndex+1}" />
+			    				<f:facet name="footer">
+			    					<p:commandButton title="Ajouter" icon="fa fa-plus" action="#{agreementReadPage.openDialog('add.arrival.place')}" update=":form:dialogOutputPanel"/>
+			    				</f:facet>
+			    			</p:column>
+			    			<f:facet name="header">
+			    				<h:outputText value="Lieux de déchargement" />
+			    			</f:facet>
+			    			<p:column headerText="Nom">
+			    				<h:outputText value="#{agreementArrivalPlace.place.name}" />
+			    			</p:column>
+			    			<p:column headerText="Durée de parcours en minute">
+			    				<h:outputText value="#{agreementArrivalPlace.durationInMinute}" />
+			    			</p:column>
+			    			<p:column width="60">
+			    				<p:commandButton title="Retirer" icon="fa fa-minus" action="#{agreementReadPage.removeArrivalPlace(agreementArrivalPlace)}" update=":form:arrivalPlaceDataTable"/>
+			    			</p:column>
+			    		</p:dataTable> 			
+	    			</div>
+	    		</div>
+	    		<div class="ui-g-5">
+	    			<p:dataTable id="agreementTruckDataTable" value="#{agreementReadPage.agreement.agreementTrucks}" var="agreementTruck">
+		    			<f:facet name="header">
+		    				<h:outputText value="Camions" />
+		    			</f:facet>
+		    			<p:column width="60">
+			    			<h:outputText value="#{rowIndex+1}" />
+			    			<f:facet name="footer">
+			    				<p:commandButton title="Ajouter" icon="fa fa-plus" action="#{agreementReadPage.openDialog('add.truck')}" update=":form:dialogOutputPanel"/>
+			    			</f:facet>
+			    		</p:column>
+		  				<p:column headerText="Immatriculation">
+		  					<h:outputText value="#{agreementTruck.truck.code}" />
+		  				</p:column>
+		  				<p:column headerText="Conducteur">
+		  					<h:outputText value="#{agreementTruck.truck.driver.person.firstName} #{truck.driver.person.lastNames}" />
+		  				</p:column>
+		  				<p:column width="60">
+			    			<p:commandButton title="Retirer" icon="fa fa-minus" action="#{agreementReadPage.removeTruck(agreementTruck)}" update=":form:arrivalPlaceDataTable"/>
+			    		</p:column>
+		  			</p:dataTable>
+	    		</div>
+	    	</div>
     		<p:separator/>
     		<h3><h:outputText value="Cumul des poids par produit" /></h3>
     		<ui:include src="__listCumulByProduct__.xhtml">
@@ -77,6 +124,11 @@
     		<p:button value="Clore le contrat" outcome="agreementCloseView" icon="fa fa-sign-out" rendered="#{not agreementReadPage.agreement.closed}">
     			<f:param name="entityidentifier" value="#{agreementReadPage.agreement.identifier}"/>
     		</p:button>
+    		
+    		<p:outputPanel id="dialogOutputPanel">
+		   		<ui:include src="__dataTableDialog__.xhtml"/>
+			</p:outputPanel>
+    		
     	</ui:define>
     </cyk:page>
     

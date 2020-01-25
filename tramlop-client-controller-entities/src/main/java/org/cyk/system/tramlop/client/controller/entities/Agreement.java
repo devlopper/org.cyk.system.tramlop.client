@@ -38,6 +38,10 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	private List<Delivery> deliveries;
 	private Boolean closed;
 	
+	private Collection<AgreementProduct> agreementProducts;
+	private Collection<AgreementTruck> agreementTrucks;
+	private Collection<AgreementArrivalPlace> agreementArrivalPlaces;
+	
 	public Agreement(String code,String customerCode,String departurePlaceCode) {
 		setCode(code);
 		setCustomerFromCode(customerCode);
@@ -158,4 +162,8 @@ public class Agreement extends AbstractDataIdentifiableSystemStringIdentifiableB
 	public static final String FIELD_CLOSED = "closed";
 	public static final String FIELD_CUSTOMER = "customer";
 	public static final String FIELD_DEPARTURE_PLACE = "departurePlace";
+	
+	public static final String FIELD_AGREEMENT_PRODUCTS = "agreementProducts";
+	public static final String FIELD_AGREEMENT_TRUCKS = "agreementTrucks";
+	public static final String FIELD_AGREEMENT_ARRIVAL_PLACES = "agreementArrivalPlaces";
 }

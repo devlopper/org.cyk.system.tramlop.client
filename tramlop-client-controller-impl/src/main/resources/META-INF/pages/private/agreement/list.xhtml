@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
+	
+    <cyk:page value="#{agreementListPage}">
+    	<ui:define name="centerCenter">.    		
+    		<p:dataTable value="#{agreementListPage.agreements}" var="agreement" emptyMessage="Aucun contrats trouvés">
+				<p:columnGroup type="header">
+					<p:row>
+						<p:column headerText="Code" width="200"/>
+						<p:column headerText="Client"/>
+						<p:column headerText="Produits"/>
+						<p:column headerText="Actions" width="100"/>
+					</p:row>
+				</p:columnGroup>
+		
+		  		<p:column>
+		  			<h:outputText value="#{agreement.code}" />
+		  		</p:column>
+		  		<p:column>
+		  			<h:outputText value="#{agreement.customer.person.firstName} #{agreement.customer.person.lastNames}" />
+		  		</p:column>
+		  		<p:column>
+		  			<h:outputText value="#{agreement.products}" />
+		  		</p:column>
+		  		
+		  		<p:column>
+		  			<p:button value="Ouvrir" icon="fa fa-folder-open" outcome="agreementReadView">
+		  				<f:param name="entityidentifier" value="#{agreement.identifier}"/>
+		  			</p:button>
+		  		</p:column>
+		  	</p:dataTable>	    		
+    	</ui:define>
+    </cyk:page>
+    
+</html>

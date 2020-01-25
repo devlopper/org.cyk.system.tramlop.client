@@ -33,7 +33,9 @@ public abstract class AbstractAgreementReadPage extends AbstractPageContainerMan
 				.setFields(StringHelper.concatenate(CollectionHelper.listOf(
 						Agreement.FIELD_PRODUCTS,FieldHelper.join(Agreement.FIELD_PRODUCTS,Product.FIELD_WEIGHT_IN_KILO_GRAM)
 						,Agreement.FIELD_ARRIVAL_PLACES,FieldHelper.join(Agreement.FIELD_ARRIVAL_PLACES,Place.FIELD_DURATION_IN_MINUTE)
-						,Agreement.FIELD_TRUCKS)
+						,Agreement.FIELD_TRUCKS
+						,Agreement.FIELD_AGREEMENT_PRODUCTS,Agreement.FIELD_AGREEMENT_TRUCKS,Agreement.FIELD_AGREEMENT_ARRIVAL_PLACES
+						)
 						, ConstantCharacter.COMA.toString())));
 	}
 	

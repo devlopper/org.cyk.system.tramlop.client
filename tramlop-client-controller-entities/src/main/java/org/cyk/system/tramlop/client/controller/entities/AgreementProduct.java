@@ -24,4 +24,7 @@ public class AgreementProduct extends AbstractDataIdentifiableSystemStringImpl i
 	@NotNull @Input @InputChoice @InputChoiceOne @InputChoiceOneCombo
 	private Product product;
 	
+	private Integer weightInKiloGram;
+	
+	public static final String FIELD_WEIGHT_IN_KILO_GRAM = "weightInKiloGram";
 }

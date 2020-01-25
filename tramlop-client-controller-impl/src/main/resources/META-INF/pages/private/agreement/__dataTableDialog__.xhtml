@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core"      
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
+	
+ 	<p:dialog id="dialog" header="#{__page__.dialogTitle}" modal="true" widgetVar="dialog" fitViewport="true" 
+		styleClass="cyk-dialog" closeOnEscape="true" draggable="false" dynamic="true" resizable="false">		
+		<ui:fragment rendered="#{__page__.dialogAction eq 'add.product'}">
+			<ui:decorate template="/input/select/many/autoComplete.xhtml">
+				<ui:param name="autoComplete" value="#{__page__.products}"/>
+			</ui:decorate>
+		</ui:fragment>							
+ 		<p:separator/>		
+ 		<cyk:commandable value="#{__page__.dialogCommandable}" />
+  	</p:dialog>
+  	
+	
+</ui:composition>
